@@ -1,0 +1,42 @@
+{
+    "title": "nmos-js",
+    "about": "An NMOS Client",
+    "palette": {
+        "primary": {
+            "main": "rgb(45,117,199)",
+            "contrastText": "#fff"
+        },
+        "secondary": {
+            "main": "rgb(0,47,103)",
+            "contrastText": "#fff"
+        }
+    },
+    "Query API": {
+    },
+    "DNS-SD API": {
+    },
+    "Logging API": {
+    },
+    "RQL": {
+        "value": true,
+        "disabled": true
+    },
+    "Paging Limit": {
+    },
+    "Friendly Parameters": {
+        "value": true
+    },
+    "Connect Filter": {
+        "value": {
+            "$constraint_sets_active": null
+        }
+    },
+    "refresh time": {
+        "value": 4
+    },
+    "theme": {
+        "value": {
+            "type": "light"
+        }
+    }
+}
