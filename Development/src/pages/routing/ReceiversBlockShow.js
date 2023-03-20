@@ -30,7 +30,7 @@ import SanitizedDivider from '../../components/SanitizedDivider';
 import TAIField from '../../components/TAIField';
 import TransportFileViewer from '../../components/TransportFileViewer';
 import labelize from '../../components/labelize';
-import ConnectionManagementTab from './ConnectionManagementTab';
+import ConnectionManagementTab from './ConnectionBlockManagementTab';
 import ReceiverConstraintSetCardsGrid from './ReceiverBlockConstraintSets';
 import ReceiverTransportParamsCardsGrid from './ReceiverBlockTransportParams';
 import { queryVersion } from '../../settings';
