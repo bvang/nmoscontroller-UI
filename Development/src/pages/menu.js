@@ -18,6 +18,7 @@ import {
     ReceiverIcon,
     RegistryIcon,
     RegistryLogsIcon,
+    RoutingIcon,
     SenderIcon,
     SourceIcon,
     SubscriptionIcon,
@@ -87,6 +88,7 @@ const CustomMenu = () => {
             <CustomMenuItem to={'/flows'} icon={<FlowIcon />} />
             <CustomMenuItem to={'/senders'} icon={<SenderIcon />} />
             <CustomMenuItem to={'/receivers'} icon={<ReceiverIcon />} />
+            <CustomMenuItem to={'/routing'} icon={<RoutingIcon />} />
             <CustomMenuItem to={'/subscriptions'} icon={<SubscriptionIcon />} />
             <Divider />
             <CustomMenuItem
