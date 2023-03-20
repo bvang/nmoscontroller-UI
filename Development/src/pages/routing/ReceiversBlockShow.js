@@ -31,8 +31,8 @@ import TAIField from '../../components/TAIField';
 import TransportFileViewer from '../../components/TransportFileViewer';
 import labelize from '../../components/labelize';
 import ConnectionManagementTab from './ConnectionManagementTab';
-import ReceiverConstraintSetCardsGrid from './ReceiverConstraintSets';
-import ReceiverTransportParamsCardsGrid from './ReceiverTransportParams';
+import ReceiverConstraintSetCardsGrid from './ReceiverBlockConstraintSets';
+import ReceiverTransportParamsCardsGrid from './ReceiverBlockTransportParams';
 import { queryVersion } from '../../settings';
 
 export const ReceiversShow = props => {
