@@ -31,7 +31,7 @@ import TAIField from '../../components/TAIField';
 import UrlField from '../../components/URLField';
 import labelize from '../../components/labelize';
 import { ContentCopyIcon } from '../../icons';
-import SenderTransportParamsCardsGrid from './SenderTransportParams';
+import SenderTransportParamsCardsGrid from './SenderBlockTransportParams';
 import { queryVersion } from '../../settings';
 
 export const SendersShow = props => {
