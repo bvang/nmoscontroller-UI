@@ -6,4 +6,4 @@ import SendersBlockShow from './SendersBlockShow';
 import ReceiversBlockList from './ReceiversBlockList';
 import ReceiversBlockShow from './ReceiversBlockShow';
 
-export { receiversBlockList, ReceiversBlockShow, SendersBlockList, SendersBlockShow };
+export { ReceiversBlockList, ReceiversBlockShow, SendersBlockList, SendersBlockShow };
