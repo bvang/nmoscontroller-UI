@@ -35,7 +35,7 @@ import ActiveField from '../../components/ActiveField';
 import LinkChipField from '../../components/LinkChipField';
 import PaginationButtons from '../../components/PaginationButtons';
 import ResourceTitle from '../../components/ResourceTitle';
-import ConnectButtons from './ConnectButtons';
+import ConnectButtons from './ConnectBlockButtons';
 import {
     QUERY_API,
     apiUsingRql,
