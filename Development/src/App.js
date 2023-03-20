@@ -12,7 +12,7 @@ import { DevicesList, DevicesShow } from './pages/devices';
 import { SourcesList, SourcesShow } from './pages/sources';
 import { FlowsList, FlowsShow } from './pages/flows';
 import { ReceiversEdit, ReceiversList, ReceiversShow } from './pages/receivers';
-import { ReceiversList, ReceiversShow, SendersList, SendersShow  } from './pages/routing';
+import { ReceiversBlockList, ReceiversBlockShow, SendersBlockList, SendersBlockShow  } from './pages/routing';
 import { SendersEdit, SendersList, SendersShow } from './pages/senders';
 import { LogsList, LogsShow } from './pages/logs';
 import {
@@ -59,8 +59,8 @@ const AppAdmin = () => (
             name="routing"
             //list={ReceiversList}
             //show={ReceiversShow}
-            list={SendersList}
-            show={SendersShow}
+            list={SendersBlockList}
+            show={SendersBlockShow}
         />
         <Resource
             name="subscriptions"
