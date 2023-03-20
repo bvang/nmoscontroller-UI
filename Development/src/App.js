@@ -55,6 +55,13 @@ const AppAdmin = () => (
             edit={ReceiversEdit}
         />
         <Resource
+            name="routing"
+            list={ReceiversList}
+            show={ReceiversShow}
+            list={SendersList}
+            show={SendersShow}
+        />
+        <Resource
             name="subscriptions"
             list={SubscriptionsList}
             show={SubscriptionsShow}
