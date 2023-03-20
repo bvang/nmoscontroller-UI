@@ -8,6 +8,7 @@ import FlowIcon from './Flow';
 import JsonIcon from './JsonIcon';
 import NodeIcon from './Node';
 import ReceiverIcon from './Receiver';
+import RoutingIcon from './Routing';
 import RegistryIcon from './Registry';
 import RegistryLogsIcon from './RegistryLogs';
 import SenderIcon from './Sender';
@@ -30,6 +31,7 @@ export {
     JsonIcon,
     NodeIcon,
     ReceiverIcon,
+    RoutingIcon,
     RegistryIcon,
     RegistryLogsIcon,
     SenderIcon,
