@@ -4,7 +4,7 @@ module.exports = {
     endOfLine: 'auto',
     jsxBracketSameLine: false,
     jsxSingleQuote: false,
-    printWidth: 100,
+    printWidth: 80,
     quoteProps: 'as-needed',
     rangeStart: 0,
     rangeEnd: Infinity,
