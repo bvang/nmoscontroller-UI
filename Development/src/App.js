@@ -13,8 +13,8 @@ import { SourcesList, SourcesShow } from './pages/sources';
 import { FlowsList, FlowsShow } from './pages/flows';
 import { ReceiversEdit, ReceiversList, ReceiversShow } from './pages/receivers';
 import {
-    ReceiversBlockList,
-    ReceiversBlockShow,
+    //ReceiversBlockList,
+    //ReceiversBlockShow,
     SendersBlockList,
     SendersBlockShow,
 } from './pages/routing';
@@ -62,8 +62,8 @@ const AppAdmin = () => (
         />
         <Resource
             name="routing"
-            list={ReceiversBlockList}
-            show={ReceiversBlockShow}
+            //list={ReceiversBlockList}
+            //show={ReceiversBlockShow}
             list={SendersBlockList}
             show={SendersBlockShow}
         />
