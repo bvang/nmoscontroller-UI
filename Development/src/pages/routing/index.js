@@ -7,8 +7,8 @@ import ReceiversBlockList from './ReceiversBlockList';
 import ReceiversBlockShow from './ReceiversBlockShow';
 
 export {
-  ReceiversBlockList,
-  ReceiversBlockShow,
-  SendersBlockList,
-  SendersBlockShow,
+    ReceiversBlockList,
+    ReceiversBlockShow,
+    SendersBlockList,
+    SendersBlockShow,
 };
