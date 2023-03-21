@@ -7,6 +7,7 @@ import {
     TableCell,
     TableHead,
     TableRow,
+    Button,
 } from '@material-ui/core';
 import { Loading, ShowButton, Title } from 'react-admin';
 import ActiveField from '../../components/ActiveField';
@@ -50,7 +51,6 @@ const SendersList = props => {
                 <CardContent>
                     <FilterPanel filter={filter} setFilter={setFilter}>
                         <StringFilter source="label" />
-                        <StringFilter source="description" />
                         <AutocompleteFilter
                             source="transport"
                             {...parameterAutocompleteProps(TRANSPORTS)}
@@ -63,6 +63,25 @@ const SendersList = props => {
                         )}
                         <StringFilter source="id" />
                     </FilterPanel>
+
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>
+                                    <Button variant="contained">Video</Button>
+                                </TableCell>
+                                <TableCell>
+                                    <Button variant="contained">Audio</Button>
+                                </TableCell>
+                                <TableCell>
+                                    <Button variant="contained">Data</Button>
+                                </TableCell>
+                                <TableCell>
+                                    <Button variant="contained">Show Sources linked</Button>
+                                </TableCell> 
+                            </TableRow>
+                        </TableHead>
+                    </Table>
                     <Table>
                         <TableHead>
                             <TableRow>
@@ -71,11 +90,11 @@ const SendersList = props => {
                                         paddingLeft: '32px',
                                     }}
                                 >
-                                    Label
+                                    Sources
                                 </TableCell>
                                 <TableCell>Transport</TableCell>
                                 {queryVersion() >= 'v1.2' && (
-                                    <TableCell>Active</TableCell>
+                                    <TableCell>Search name...</TableCell>
                                 )}
                             </TableRow>
                         </TableHead>
