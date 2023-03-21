@@ -80,7 +80,7 @@ const SendersList = props => {
                                     <Button variant="contained">
                                         Show Sources linked
                                     </Button>
-                                </TableCell> 
+                                </TableCell>
                             </TableRow>
                         </TableHead>
                     </Table>
