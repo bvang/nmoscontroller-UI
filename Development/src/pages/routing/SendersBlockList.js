@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {
+    Button,
     Card,
     CardContent,
     Table,
@@ -7,7 +8,6 @@ import {
     TableCell,
     TableHead,
     TableRow,
-    Button,
 } from '@material-ui/core';
 import { Loading, ShowButton, Title } from 'react-admin';
 import ActiveField from '../../components/ActiveField';
@@ -77,7 +77,9 @@ const SendersList = props => {
                                     <Button variant="contained">Data</Button>
                                 </TableCell>
                                 <TableCell>
-                                    <Button variant="contained">Show Sources linked</Button>
+                                    <Button variant="contained">
+                                        Show Sources linked
+                                    </Button>
                                 </TableCell> 
                             </TableRow>
                         </TableHead>
