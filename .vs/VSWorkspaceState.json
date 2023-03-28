@@ -3,11 +3,8 @@
     "",
     "\\Development",
     "\\Development\\src",
-    "\\Development\\src\\pages",
-    "\\Development\\src\\pages\\nodes",
-    "\\Development\\src\\pages\\routing",
-    "\\Development\\src\\pages\\senders"
+    "\\Development\\src\\pages"
   ],
-  "SelectedNode": "\\Development\\src\\pages\\routing\\SenderBlockTransportParams.js",
+  "SelectedNode": "\\Development\\src",
   "PreviewInSolutionExplorer": false
 }
