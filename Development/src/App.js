@@ -62,8 +62,10 @@ const AppAdmin = () => (
         />
         <Resource
             name="routing"
-            list={SendersBlockList}
-            show={SendersBlockShow}
+            //list={ReceiversBlockList}
+            //show={ReceiversBlockShow}
+            list={SendersBlockShow}
+            //show={SendersBlockShow}
         />
         <Resource
             name="subscriptions"
