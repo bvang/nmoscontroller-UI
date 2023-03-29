@@ -6,19 +6,19 @@ import {
     BooleanField,
     Loading,
     ReferenceField,
-    ShowContextProvider,
+    //ShowContextProvider,
     ShowView,
     SimpleShowLayout,
     TextField,
     useNotify,
     useRecordContext,
-    useShowController,
+    //useShowController,
 } from 'react-admin';
 import { get, has } from 'lodash';
 import copy from 'clipboard-copy';
 import { useTheme } from '@material-ui/styles';
 import LinkChipField from '../../components/LinkChipField';
-import ConnectionShowActions from '../../components/ConnectionShowActions';
+//import ConnectionShowActions from '../../components/ConnectionShowActions';
 import ItemArrayField from '../../components/ItemArrayField';
 import ObjectField from '../../components/ObjectField';
 import {
@@ -66,17 +66,6 @@ const SendersBlockShow = props => {
 
     //added filter and pagination for page
     const [filter, setFilter] = useJSONSetting('Senders Filter');
-    const [paginationURL, setPaginationURL] = useState(null);
-    const { data, loaded, pagination, url } = useGetList({
-        ...props,
-        filter,
-        paginationURL,
-    });
-    if (!loaded) return <Loading />;
-
-    const nextPage = label => {
-        setPaginationURL(pagination[label]);
-    };
     //MODIFICATION
     return (
         <>
@@ -113,7 +102,20 @@ const SendersBlockShow = props => {
                     </Tabs>
                 </Paper>
                 <span style={{ flexGrow: 1 }} />
-                <ConnectionShowActions {...props} />
+                <FilterPanel filter={filter} setFilter={setFilter}>
+                    <StringFilter source="label" />
+                    <AutocompleteFilter
+                        source="transport"
+                        {...parameterAutocompleteProps(TRANSPORTS)}
+                    />
+                    {queryVersion() >= 'v1.2' && (
+                        <BooleanFilter
+                            source="subscription.active"
+                            label="Active"
+                        />
+                    )}
+                    <StringFilter source="id" />
+                </FilterPanel>
             </div>
             <Route exact path={`${props.basePath}/${props.id}/show/`}>
                 <ShowSummaryTab record={record} {...props} />
