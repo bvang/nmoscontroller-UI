@@ -4,6 +4,7 @@ import { IconButton, Paper, Tab, Tabs, Typography } from '@material-ui/core';
 import {
     ArrayField,
     BooleanField,
+    Loading,
     ReferenceField,
     ShowContextProvider,
     ShowView,
@@ -32,7 +33,8 @@ import UrlField from '../../components/URLField';
 import labelize from '../../components/labelize';
 import { ContentCopyIcon } from '../../icons';
 import SenderTransportParamsCardsGrid from './SenderBlockTransportParams';
-import { queryVersion } from '../../settings';
+import useGetList from '../../components/useGetList';
+import { queryVersion, useJSONSetting } from '../../settings';
 
 /*export const SendersBlockShow = props => {
     const controllerProps = useShowController(props);
@@ -44,10 +46,10 @@ import { queryVersion } from '../../settings';
 };*/
 
 const SendersShowView = props => {
-/*
+
     const { record } = useRecordContext();
 
-    const [useConnectionAPI, setUseConnectionAPI] = useState(false);
+   /* const [useConnectionAPI, setUseConnectionAPI] = useState(false);
 
     useEffect(() => {
         if (get(record, '$connectionAPI') !== undefined) {
@@ -57,7 +59,14 @@ const SendersShowView = props => {
         }
     }, [record]);*/
 
-    //added filter and pagination for page
+    
+    const theme = useTheme();
+    const tabBackgroundColor =
+        theme.palette.type === 'light'
+            ? theme.palette.grey[100]
+            : theme.palette.grey[900];
+
+            //added filter and pagination for page
     const [filter, setFilter] = useJSONSetting('Senders Filter');
     const [paginationURL, setPaginationURL] = useState(null);
     const { data, loaded, pagination, url } = useGetList({
@@ -72,11 +81,7 @@ const SendersShowView = props => {
     };
     //MODIFICATION 
 
-    const theme = useTheme();
-    const tabBackgroundColor =
-        theme.palette.type === 'light'
-            ? theme.palette.grey[100]
-            : theme.palette.grey[900];
+    
     return (
         <>
             <div style={{ display: 'flex' }}>

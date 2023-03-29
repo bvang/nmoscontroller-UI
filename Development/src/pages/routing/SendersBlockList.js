@@ -26,7 +26,7 @@ import ListActions from '../../components/ListActions';
 import useGetList from '../../components/useGetList';
 import { queryVersion, useJSONSetting } from '../../settings';
 
-const SendersShowList = props => {
+const SendersBlockList = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
     const [paginationURL, setPaginationURL] = useState(null);
     const { data, loaded, pagination, url } = useGetList({
