@@ -64,7 +64,7 @@ const SendersBlockShow = props => {
             ? theme.palette.grey[100]
             : theme.palette.grey[900];
 
-//added filter and pagination for page
+    //added filter and pagination for page
     const [filter, setFilter] = useJSONSetting('Senders Filter');
     const [paginationURL, setPaginationURL] = useState(null);
     const { data, loaded, pagination, url } = useGetList({
@@ -77,7 +77,7 @@ const SendersBlockShow = props => {
     const nextPage = label => {
         setPaginationURL(pagination[label]);
     };
-    //MODIFICATION 
+    //MODIFICATION
     return (
         <>
             <div style={{ display: 'flex' }}>
