@@ -45,11 +45,12 @@ import { queryVersion, useJSONSetting } from '../../settings';
     );
 };*/
 
-const SendersShowView = props => {
+//const SendersShowView = props => {
+const SendersBlockShow = props => {
 
     const { record } = useRecordContext();
 
-   /* const [useConnectionAPI, setUseConnectionAPI] = useState(false);
+    const [useConnectionAPI, setUseConnectionAPI] = useState(false);
 
     useEffect(() => {
         if (get(record, '$connectionAPI') !== undefined) {
@@ -57,7 +58,7 @@ const SendersShowView = props => {
         } else {
             setUseConnectionAPI(false);
         }
-    }, [record]);*/
+    }, [record]);
 
     
     const theme = useTheme();
