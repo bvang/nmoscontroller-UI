@@ -47,7 +47,6 @@ import { queryVersion, useJSONSetting } from '../../settings';
 
 //const SendersShowView = props => {
 const SendersBlockShow = props => {
-
     const { record } = useRecordContext();
 
     const [useConnectionAPI, setUseConnectionAPI] = useState(false);
@@ -59,15 +58,13 @@ const SendersBlockShow = props => {
             setUseConnectionAPI(false);
         }
     }, [record]);
-
-    
     const theme = useTheme();
     const tabBackgroundColor =
         theme.palette.type === 'light'
             ? theme.palette.grey[100]
             : theme.palette.grey[900];
 
-            //added filter and pagination for page
+//added filter and pagination for page
     const [filter, setFilter] = useJSONSetting('Senders Filter');
     const [paginationURL, setPaginationURL] = useState(null);
     const { data, loaded, pagination, url } = useGetList({
@@ -81,8 +78,6 @@ const SendersBlockShow = props => {
         setPaginationURL(pagination[label]);
     };
     //MODIFICATION 
-
-    
     return (
         <>
             <div style={{ display: 'flex' }}>
