@@ -497,7 +497,7 @@ const WebSocketSenderEdit = ({ record }) => {
     );
 };
 
-const SenderTransportParamsCardsGrid = ({ ids, record }) => {
+const SenderBlockTransportParamsCardsGrid = ({ ids, record }) => {
     const type = get(record, '$transporttype');
     const data = [];
     if (ids) {
@@ -528,4 +528,4 @@ const SenderTransportParamsCardsGrid = ({ ids, record }) => {
     }
 };
 
-export default SenderTransportParamsCardsGrid;
+export default SenderBlockTransportParamsCardsGrid;

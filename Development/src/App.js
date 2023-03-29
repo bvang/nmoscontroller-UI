@@ -15,7 +15,7 @@ import { ReceiversEdit, ReceiversList, ReceiversShow } from './pages/receivers';
 import {
     //ReceiversBlockList,
     //ReceiversBlockShow,
-    SendersBlockList,
+    //SendersBlockList,
     SendersBlockShow,
 } from './pages/routing';
 import { SendersEdit, SendersList, SendersShow } from './pages/senders';
@@ -64,7 +64,7 @@ const AppAdmin = () => (
             name="routing"
             //list={ReceiversBlockList}
             //show={ReceiversBlockShow}
-            list={SendersBlockList}
+            //list={SendersBlockList}
             show={SendersBlockShow}
         />
         <Resource

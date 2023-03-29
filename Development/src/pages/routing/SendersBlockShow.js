@@ -34,16 +34,17 @@ import { ContentCopyIcon } from '../../icons';
 import SenderTransportParamsCardsGrid from './SenderBlockTransportParams';
 import { queryVersion } from '../../settings';
 
-export const SendersShow = props => {
+/*export const SendersBlockShow = props => {
     const controllerProps = useShowController(props);
     return (
         <ShowContextProvider value={controllerProps}>
             <SendersShowView {...props} />
         </ShowContextProvider>
     );
-};
+};*/
 
 const SendersShowView = props => {
+/*
     const { record } = useRecordContext();
 
     const [useConnectionAPI, setUseConnectionAPI] = useState(false);
@@ -54,7 +55,22 @@ const SendersShowView = props => {
         } else {
             setUseConnectionAPI(false);
         }
-    }, [record]);
+    }, [record]);*/
+
+    //added filter and pagination for page
+    const [filter, setFilter] = useJSONSetting('Senders Filter');
+    const [paginationURL, setPaginationURL] = useState(null);
+    const { data, loaded, pagination, url } = useGetList({
+        ...props,
+        filter,
+        paginationURL,
+    });
+    if (!loaded) return <Loading />;
+
+    const nextPage = label => {
+        setPaginationURL(pagination[label]);
+    };
+    //MODIFICATION 
 
     const theme = useTheme();
     const tabBackgroundColor =
@@ -76,12 +92,12 @@ const SendersShowView = props => {
                         textColor="primary"
                     >
                         <Tab
-                            label="Summary"
+                            label="Video"
                             value={`${props.match.url}`}
                             component={Link}
                             to={`${props.basePath}/${props.id}/show/`}
                         />
-                        {['active', 'staged', 'transportfile'].map(key => (
+                        {['Audio', 'Data', 'transportfile'].map(key => (
                             <Tab
                                 key={key}
                                 label={labelize(key)}
@@ -321,4 +337,4 @@ const ShowTransportFileTab = ({ record }) => {
     );
 };
 
-export default SendersShow;
+export default SendersBlockShow;
