@@ -34,7 +34,7 @@ import labelize from '../../components/labelize';
 import { ContentCopyIcon } from '../../icons';
 import SenderTransportParamsCardsGrid from './SenderBlockTransportParams';
 //import useGetList from '../../components/useGetList';
-import { queryVersion /*, useJSONSetting*/} from '../../settings';
+import { queryVersion /*, useJSONSetting*/ } from '../../settings';
 
 /*export const SendersBlockShow = props => {
     const controllerProps = useShowController(props);
