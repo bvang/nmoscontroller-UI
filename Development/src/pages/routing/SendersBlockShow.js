@@ -65,7 +65,7 @@ const SendersBlockShow = props => {
             : theme.palette.grey[900];
 
     //added filter and pagination for page
-    const [filter, setFilter] = useJSONSetting('Senders Filter');
+    //const [filter, setFilter] = useJSONSetting('Senders Filter');
     //MODIFICATION
     return (
         <>
@@ -102,20 +102,6 @@ const SendersBlockShow = props => {
                     </Tabs>
                 </Paper>
                 <span style={{ flexGrow: 1 }} />
-                <FilterPanel filter={filter} setFilter={setFilter}>
-                    <StringFilter source="label" />
-                    <AutocompleteFilter
-                        source="transport"
-                        {...parameterAutocompleteProps(TRANSPORTS)}
-                    />
-                    {queryVersion() >= 'v1.2' && (
-                        <BooleanFilter
-                            source="subscription.active"
-                            label="Active"
-                        />
-                    )}
-                    <StringFilter source="id" />
-                </FilterPanel>
             </div>
             <Route exact path={`${props.basePath}/${props.id}/show/`}>
                 <ShowSummaryTab record={record} {...props} />
