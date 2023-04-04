@@ -4,7 +4,7 @@ import { IconButton, Paper, Tab, Tabs, Typography } from '@material-ui/core';
 import {
     ArrayField,
     BooleanField,
-    Loading,
+    //Loading,
     ReferenceField,
     //ShowContextProvider,
     ShowView,
@@ -33,7 +33,7 @@ import UrlField from '../../components/URLField';
 import labelize from '../../components/labelize';
 import { ContentCopyIcon } from '../../icons';
 import SenderTransportParamsCardsGrid from './SenderBlockTransportParams';
-import useGetList from '../../components/useGetList';
+//import useGetList from '../../components/useGetList';
 import { queryVersion, useJSONSetting } from '../../settings';
 
 /*export const SendersBlockShow = props => {
