@@ -12,13 +12,13 @@ import {
     TextField,
     withStyles,
 } from '@material-ui/core';
-import { Title } from 'react-admin';
+import { ShowButton, Title } from 'react-admin';
 import {
     QUERY_API,
     disabledSetting,
     hiddenSetting,
-    useSettingsContext,
 } from '../../settings';
+import useGetList from '../../components/useGetList';
 
 const StyledListItem = withStyles(theme => ({
     root: {
@@ -32,16 +32,18 @@ const StyledTextField = withStyles(theme => ({
     },
 }))(TextField);
 
-const StyledDivider = withStyles(theme => ({
+/*const StyledDivider = withStyles(theme => ({
     root: {
         width: 450,
     },
-}))(Divider);
+}))(Divider);*/
 
 const selectOnFocus = event => event.target.select();
 
-const RoutingPage = () => {
-    const [values, setValues] = useSettingsContext();
+const RoutingPage = props => {
+    const { data } = useGetList({
+        ...props,
+    });
 
     const handleTextChange = name => event => {
         setValues({ ...values, [name]: event.target.value });
