@@ -9,12 +9,7 @@ import {
 } from '@material-ui/core';
 import { Title } from 'react-admin';
 import {
-    DNSSD_API,
-//    FRIENDLY_PARAMETERS,
-    LOGGING_API,
-    PAGING_LIMIT,
     QUERY_API,
-    USE_RQL,
     disabledSetting,
     hiddenSetting,
     useSettingsContext,
