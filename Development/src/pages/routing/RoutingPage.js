@@ -1,7 +1,7 @@
 import {
     Card,
     CardContent,
-    List,
+    //List,
     ListItem,
     Table,
     TableBody,
@@ -45,19 +45,6 @@ const RoutingPage = props => {
             <Card>
                 <Title title={'Routing'} />
                 <CardContent>
-                    <List>
-                        {!hiddenSetting(QUERY_API) && (
-                            <StyledListItem>
-                                <StyledTextField
-                                    label="Query API"
-                                    variant="filled"
-                                    onFocus={selectOnFocus}
-                                    disabled={disabledSetting(QUERY_API)}
-                                    helperText="Used to show the registered Nodes and their sub-resources"
-                                />
-                            </StyledListItem>
-                        )}
-                    </List>
                     <Table>
                         <TableHead>
                             <TableRow>
