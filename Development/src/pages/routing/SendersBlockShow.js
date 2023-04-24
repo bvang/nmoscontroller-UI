@@ -4,7 +4,7 @@ import { IconButton, Paper, Tab, Tabs, Typography } from '@material-ui/core';
 import {
     ArrayField,
     BooleanField,
-    //Loading,
+    Loading,
     ReferenceField,
     //ShowContextProvider,
     ShowView,

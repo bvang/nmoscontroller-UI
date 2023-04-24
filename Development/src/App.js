@@ -16,7 +16,7 @@ import {
     //ReceiversBlockList,
     //ReceiversBlockShow,
     //SendersBlockList,
-    SendersBlockShow,
+    RoutingPage,
 } from './pages/routing';
 import { SendersEdit, SendersList, SendersShow } from './pages/senders';
 import { LogsList, LogsShow } from './pages/logs';
@@ -64,8 +64,8 @@ const AppAdmin = () => (
             name="routing"
             //list={ReceiversBlockList}
             //show={ReceiversBlockShow}
-            //list={SendersBlockList}
-            show={SendersBlockShow}
+            list={RoutingPage}
+            //show={SendersBlockShow}
         />
         <Resource
             name="subscriptions"
