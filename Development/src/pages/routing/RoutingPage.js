@@ -71,7 +71,7 @@ const RoutingPage = () => {
                 </CardContent>
             </Card>
         </div>
-        <div style={{ paddingTop: '24px' }}>
+        /*<div style={{ paddingTop: '24px' }}>
             <Card>
                 <Title title={'Destinations'} />
                 <CardContent>
@@ -93,7 +93,7 @@ const RoutingPage = () => {
                     </List>
                 </CardContent>
             </Card>
-        </div>
+        </div>*/
     );
 };
 
