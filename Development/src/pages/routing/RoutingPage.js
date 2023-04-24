@@ -33,7 +33,6 @@ const StyledDivider = withStyles(theme => ({
     },
 }))(Divider);
 
-
 const selectOnFocus = event => event.target.select();
 
 const RoutingPage = () => {
