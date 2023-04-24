@@ -12,10 +12,9 @@ import {
     withStyles,
 } from '@material-ui/core';
 import { ShowButton, Title } from 'react-admin';
-import { QUERY_API, disabledSetting, hiddenSetting } from '../../settings';
 import useGetList from '../../components/useGetList';
 
-const StyledListItem = withStyles(theme => ({
+/*const StyledListItem = withStyles(theme => ({
     root: {
         justifyContent: 'center',
     },
@@ -27,13 +26,13 @@ const StyledTextField = withStyles(theme => ({
     },
 }))(TextField);
 
-/*const StyledDivider = withStyles(theme => ({
+const StyledDivider = withStyles(theme => ({
     root: {
         width: 450,
     },
-}))(Divider);*/
+}))(Divider);
 
-const selectOnFocus = event => event.target.select();
+const selectOnFocus = event => event.target.select();*/
 
 const RoutingPage = props => {
     const { data } = useGetList({
