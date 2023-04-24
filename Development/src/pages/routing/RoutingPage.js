@@ -4,6 +4,11 @@ import {
     Divider,
     List,
     ListItem,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow,
     TextField,
     withStyles,
 } from '@material-ui/core';
@@ -45,7 +50,7 @@ const RoutingPage = () => {
     return (
         <div style={{ paddingTop: '24px' }}>
             <Card>
-                <Title title={'Sources'} />
+                <Title title={'Routing'} />
                 <CardContent>
                     <List>
                         {!hiddenSetting(QUERY_API) && (
@@ -61,8 +66,38 @@ const RoutingPage = () => {
                                 />
                             </StyledListItem>
                         )}
-                        <StyledDivider />
                     </List>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell
+                                    style={{
+                                        paddingLeft: '32px',
+                                    }}
+                                >
+                                    Sources
+                                </TableCell>
+                                <TableCell>Add Filters</TableCell>
+                                <TableCell>Search name...</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {data.map(item => (
+                                <TableRow key={item.id}>
+                                    <TableCell component="th" scope="row">
+                                        <ShowButton
+                                            style={{
+                                                textTransform: 'none',
+                                            }}
+                                            basePath="/senders"
+                                            record={item}
+                                            label={item.label}
+                                        />
+                                    </TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
                 </CardContent>
             </Card>
         </div>
