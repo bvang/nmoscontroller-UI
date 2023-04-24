@@ -12,11 +12,7 @@ import {
     withStyles,
 } from '@material-ui/core';
 import { ShowButton, Title } from 'react-admin';
-import {
-    QUERY_API,
-    disabledSetting,
-    hiddenSetting,
-} from '../../settings';
+import { QUERY_API, disabledSetting, hiddenSetting,} from '../../settings';
 import useGetList from '../../components/useGetList';
 
 const StyledListItem = withStyles(theme => ({
