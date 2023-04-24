@@ -2,18 +2,23 @@ import {
     Card,
     CardContent,
     Divider,
-    FormControl,
-    FormControlLabel,
-    FormHelperText,
     List,
     ListItem,
-    MenuItem,
-    Switch,
     TextField,
     withStyles,
 } from '@material-ui/core';
 import { Title } from 'react-admin';
-
+import {
+    DNSSD_API,
+//    FRIENDLY_PARAMETERS,
+    LOGGING_API,
+    PAGING_LIMIT,
+    QUERY_API,
+    USE_RQL,
+    disabledSetting,
+    hiddenSetting,
+    useSettingsContext,
+} from '../../settings';
 
 const StyledListItem = withStyles(theme => ({
     root: {
@@ -41,10 +46,6 @@ const RoutingPage = () => {
 
     const handleTextChange = name => event => {
         setValues({ ...values, [name]: event.target.value });
-    };
-
-    const handleBooleanChange = name => event => {
-        setValues({ ...values, [name]: event.target.checked });
     };
 
     return (
