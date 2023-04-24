@@ -1,7 +1,6 @@
 import {
     Card,
     CardContent,
-    Divider,
     List,
     ListItem,
     Table,
@@ -45,10 +44,6 @@ const RoutingPage = props => {
         ...props,
     });
 
-    const handleTextChange = name => event => {
-        setValues({ ...values, [name]: event.target.value });
-    };
-
     return (
         <div style={{ paddingTop: '24px' }}>
             <Card>
@@ -60,8 +55,6 @@ const RoutingPage = props => {
                                 <StyledTextField
                                     label="Query API"
                                     variant="filled"
-                                    value={values[QUERY_API]}
-                                    onChange={handleTextChange(QUERY_API)}
                                     onFocus={selectOnFocus}
                                     disabled={disabledSetting(QUERY_API)}
                                     helperText="Used to show the registered Nodes and their sub-resources"
