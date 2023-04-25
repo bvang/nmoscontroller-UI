@@ -92,7 +92,7 @@ import {
     TableCell,
     TableHead,
     TableRow,
-    Typography
+    Typography,
 } from '@material-ui/core';
 import { Loading, ShowButton, Title } from 'react-admin';
 //import ActiveField from '../../components/ActiveField';
@@ -109,7 +109,6 @@ import PaginationButtons from '../../components/PaginationButtons';
 import ListActions from '../../components/ListActions';
 import useGetList from '../../components/useGetList';
 import { queryVersion, useJSONSetting } from '../../settings';
-
 
 const RoutingPage = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
@@ -192,11 +191,18 @@ const RoutingPage = props => {
                                         <Card sx={{ maxWidth: 200 }}>
                                             <CardActionArea>
                                                 <CardContent>
-                                                    <Typography gutterBottom variant="h5" component="div">
+                                                    <Typography 
+                                                        gutterBottom
+                                                        variant="h5" 
+                                                        component="div"
+                                                    >
                                                         Lizard
                                                         label={item.label}
                                                     </Typography>
-                                                    <Typography variant="body2" color="text.secondary">
+                                                    <Typography 
+                                                        variant="body2" 
+                                                        color="text.secondary"
+                                                    >
                                                         Antarctica
                                                     </Typography>
                                                 </CardContent>
