@@ -100,7 +100,6 @@ import FilterPanel, {
     StringFilter,
 } from '../../components/FilterPanel';
 import {
-    ParameterField,
     TRANSPORTS,
     parameterAutocompleteProps,
 } from '../../components/ParameterRegisters';
