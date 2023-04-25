@@ -191,16 +191,16 @@ const RoutingPage = props => {
                                         <Card sx={{ maxWidth: 200 }}>
                                             <CardActionArea>
                                                 <CardContent>
-                                                    <Typography 
+                                                    <Typography
                                                         gutterBottom
-                                                        variant="h5" 
+                                                        variant="h5"
                                                         component="div"
+                                                        label={item.label}
                                                     >
                                                         Lizard
-                                                        label={item.label}
                                                     </Typography>
-                                                    <Typography 
-                                                        variant="body2" 
+                                                    <Typography
+                                                        variant="body2"
                                                         color="text.secondary"
                                                     >
                                                         Antarctica
