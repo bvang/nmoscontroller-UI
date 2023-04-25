@@ -85,6 +85,7 @@ export default RoutingPage;*/
 import React, { useState } from 'react';
 import {
     Card,
+    CardActionArea,
     CardContent,
     Table,
     TableBody,
@@ -170,7 +171,7 @@ const RoutingPage = props => {
                                             style={{
                                                 textTransform: 'none',
                                             }}
-                                            basePath="/senders"
+                                            basePath="../senders"
                                             record={item}
                                             label={item.label}
                                         />
@@ -180,19 +181,26 @@ const RoutingPage = props => {
                                             style={{
                                                 textTransform: 'none',
                                             }}
-                                            basePath="/receivers"
+                                            basePath="../receivers"
                                             record={item}
                                             label={item.label}
                                         />
                                     </TableCell>
-                                    {queryVersion() >= 'v1.2' && (
-                                        <TableCell>
-                                            <ActiveField
-                                                record={item}
-                                                resource="senders"
-                                            />
-                                        </TableCell>
-                                    )}
+                                    <TableCell>
+                                        <Card sx={{ maxWidth: 200 }}>
+                                            <CardActionArea>
+                                                <CardContent>
+                                                    <Typography gutterBottom variant="h5" component="div">
+                                                        Lizard
+                                                        label={item.label}
+                                                    </Typography>
+                                                    <Typography variant="body2" color="text.secondary">
+                                                        Antarctica
+                                                    </Typography>
+                                                </CardContent>
+                                            </CardActionArea>
+                                        </Card>
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
