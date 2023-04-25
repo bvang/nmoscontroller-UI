@@ -92,9 +92,10 @@ import {
     TableCell,
     TableHead,
     TableRow,
+    Typography
 } from '@material-ui/core';
 import { Loading, ShowButton, Title } from 'react-admin';
-import ActiveField from '../../components/ActiveField';
+//import ActiveField from '../../components/ActiveField';
 import FilterPanel, {
     AutocompleteFilter,
     BooleanFilter,
@@ -108,6 +109,7 @@ import PaginationButtons from '../../components/PaginationButtons';
 import ListActions from '../../components/ListActions';
 import useGetList from '../../components/useGetList';
 import { queryVersion, useJSONSetting } from '../../settings';
+
 
 const RoutingPage = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
