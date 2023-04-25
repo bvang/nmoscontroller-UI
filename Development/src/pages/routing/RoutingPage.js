@@ -1,4 +1,4 @@
-import {
+/*import {
     Card,
     CardContent,
     //List,
@@ -32,7 +32,7 @@ const StyledDivider = withStyles(theme => ({
     },
 }))(Divider);
 
-const selectOnFocus = event => event.target.select();*/
+const selectOnFocus = event => event.target.select();
 
 const RoutingPage = props => {
     const { data } = useGetList({
@@ -78,29 +78,135 @@ const RoutingPage = props => {
                 </CardContent>
             </Card>
         </div>
-        /*<div style={{ paddingTop: '24px' }}>
+    );
+};
+
+export default RoutingPage;*/
+import React, { useState } from 'react';
+import {
+    Card,
+    CardContent,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableRow,
+} from '@material-ui/core';
+import { Loading, ShowButton, Title } from 'react-admin';
+import ActiveField from '../../components/ActiveField';
+import FilterPanel, {
+    AutocompleteFilter,
+    BooleanFilter,
+    StringFilter,
+} from '../../components/FilterPanel';
+import {
+    ParameterField,
+    TRANSPORTS,
+    parameterAutocompleteProps,
+} from '../../components/ParameterRegisters';
+import PaginationButtons from '../../components/PaginationButtons';
+import ListActions from '../../components/ListActions';
+import useGetList from '../../components/useGetList';
+import { queryVersion, useJSONSetting } from '../../settings';
+
+const RoutingPage = props => {
+    const [filter, setFilter] = useJSONSetting('Senders Filter');
+    const [paginationURL, setPaginationURL] = useState(null);
+    const { data, loaded, pagination, url } = useGetList({
+        ...props,
+        filter,
+        paginationURL,
+    });
+    if (!loaded) return <Loading />;
+
+    const nextPage = label => {
+        setPaginationURL(pagination[label]);
+    };
+
+    return (
+        <>
+            <div style={{ display: 'flex' }}>
+                <span style={{ flexGrow: 1 }} />
+                <ListActions url={url} />
+            </div>
             <Card>
-                <Title title={'Destinations'} />
+                <Title title={'Routing'} />
                 <CardContent>
-                    <List>
-                        {!hiddenSetting(QUERY_API) && (
-                            <StyledListItem>
-                                <StyledTextField
-                                    label="Query API"
-                                    variant="filled"
-                                    value={values[QUERY_API]}
-                                    onChange={handleTextChange(QUERY_API)}
-                                    onFocus={selectOnFocus}
-                                    disabled={disabledSetting(QUERY_API)}
-                                    helperText="Used to show the registered Nodes and their sub-resources"
-                                />
-                            </StyledListItem>
+                    <FilterPanel filter={filter} setFilter={setFilter}>
+                        <StringFilter source="label" />
+                        <StringFilter source="description" />
+                        <AutocompleteFilter
+                            source="transport"
+                            {...parameterAutocompleteProps(TRANSPORTS)}
+                        />
+                        {queryVersion() >= 'v1.2' && (
+                            <BooleanFilter
+                                source="subscription.active"
+                                label="Active"
+                            />
                         )}
-                        <StyledDivider />
-                    </List>
+                        <StringFilter source="id" />
+                    </FilterPanel>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell
+                                    style={{
+                                        paddingLeft: '32px',
+                                    }}
+                                >
+                                    Sources
+                                </TableCell>
+                                <TableCell>Destinations</TableCell>
+                                {queryVersion() >= 'v1.2' && (
+                                    <TableCell>Active</TableCell>
+                                )}
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {data.map(item => (
+                                <TableRow key={item.id}>
+                                    <TableCell component="th" scope="row">
+                                        <ShowButton
+                                            style={{
+                                                textTransform: 'none',
+                                            }}
+                                            basePath="/senders"
+                                            record={item}
+                                            label={item.label}
+                                        />
+                                    </TableCell>
+                                    <TableCell>
+                                        <ShowButton
+                                            style={{
+                                                textTransform: 'none',
+                                            }}
+                                            basePath="/receivers"
+                                            record={item}
+                                            label={item.label}
+                                        />
+                                    </TableCell>
+                                    {queryVersion() >= 'v1.2' && (
+                                        <TableCell>
+                                            <ActiveField
+                                                record={item}
+                                                resource="senders"
+                                            />
+                                        </TableCell>
+                                    )}
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                    <br />
+                    <PaginationButtons
+                        pagination={pagination}
+                        nextPage={nextPage}
+                        {...props}
+                    />
                 </CardContent>
             </Card>
-        </div>*/
+        </>
     );
 };
 
