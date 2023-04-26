@@ -61,7 +61,7 @@ const AppAdmin = () => (
             edit={ReceiversEdit}
         />
         <Resource
-            name="routingtest"
+            name="routing"
             //list={ReceiversBlockList}
             //show={ReceiversBlockShow}
             list={RoutingPage}

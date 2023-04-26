@@ -172,7 +172,7 @@ const RoutingPage = props => {
                                             style={{
                                                 textTransform: 'none',
                                             }}
-                                            basePath="../senders"
+                                            basePath="/senders"
                                             record={item}
                                             label={item.label}
                                         />
@@ -182,7 +182,7 @@ const RoutingPage = props => {
                                             style={{
                                                 textTransform: 'none',
                                             }}
-                                            basePath="../receivers"
+                                            basePath="/receivers"
                                             record={item}
                                             label={item.label}
                                         />
@@ -195,7 +195,7 @@ const RoutingPage = props => {
                                                         gutterBottom
                                                         variant="h5"
                                                         component="div"
-                                                        label={item.label}
+                                                        //label={item.label}
                                                     >
                                                         Lizard
                                                     </Typography>
