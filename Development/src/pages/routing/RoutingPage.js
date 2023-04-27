@@ -87,6 +87,7 @@ import {
     Card,
     CardActionArea,
     CardContent,
+    List,
     Table,
     TableBody,
     TableCell,
@@ -112,7 +113,7 @@ import { queryVersion, useJSONSetting } from '../../settings';
 
 const RoutingPage = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
-    const [paginationURL, setPaginationURL] = useState(null);
+    /*const [paginationURL, setPaginationURL] = useState(null);
     const { data, loaded, pagination, url } = useGetList({
         ...props,
         filter,
@@ -122,6 +123,28 @@ const RoutingPage = props => {
 
     const nextPage = label => {
         setPaginationURL(pagination[label]);
+    };*/
+    const [senderPaginationURL, setSenderPaginationURL] = useState(null);
+    const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
+    const { data: senderData, loaded: senderLoaded, pagination: setSenderPaginationURL, url: senderURL } = useGetList({
+        ...props,
+        resource : 'senders',
+        filter,
+        paginationURL: senderPaginationURL,
+    });
+    if (!loaded) return <Loading />;
+
+    const { data: receiverData, loaded: receiverLoaded, pagination: receiverPagination, url: receiverURL } = useGetList({
+        ...props,
+         resource : 'receivers',
+        filter,
+        paginationURL: receiverPaginationURL,
+    });
+    if (!loaded) return <Loading />;
+
+    const nextPage = label => {
+        setSenderPaginationURL(senderPaginationURL[label]);
+        setReceiverPaginationURL(receiverPaginationURL[label]);
     };
 
     return (
@@ -133,6 +156,8 @@ const RoutingPage = props => {
             <Card>
                 <Title title={'Routing'} />
                 <CardContent>
+                    <List>
+                        
                     <FilterPanel filter={filter} setFilter={setFilter}>
                         <StringFilter source="label" />
                         <StringFilter source="description" />
@@ -148,71 +173,75 @@ const RoutingPage = props => {
                         )}
                         <StringFilter source="id" />
                     </FilterPanel>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell
-                                    style={{
-                                        paddingLeft: '32px',
-                                    }}
-                                >
-                                    Sources
-                                </TableCell>
-                                <TableCell>Destinations</TableCell>
-                                {queryVersion() >= 'v1.2' && (
-                                    <TableCell>Active</TableCell>
-                                )}
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {data.map(item => (
-                                <TableRow key={item.id}>
-                                    <TableCell component="th" scope="row">
-                                        <ShowButton
-                                            style={{
-                                                textTransform: 'none',
-                                            }}
-                                            basePath="/senders"
-                                            record={item}
-                                            label={item.label}
-                                        />
-                                    </TableCell>
-                                    <TableCell>
-                                        <ShowButton
-                                            style={{
-                                                textTransform: 'none',
-                                            }}
-                                            basePath="/receivers"
-                                            record={item}
-                                            label={item.label}
-                                        />
-                                    </TableCell>
-                                    <TableCell>
-                                        <Card sx={{ maxWidth: 200 }}>
-                                            <CardActionArea>
-                                                <CardContent>
-                                                    <Typography
-                                                        gutterBottom
-                                                        variant="h5"
-                                                        component="div"
-                                                        //label={item.label}
-                                                    >
-                                                        Lizard
-                                                    </Typography>
-                                                    <Typography
-                                                        variant="body2"
-                                                        color="text.secondary"
-                                                    >
-                                                        Antarctica
-                                                    </Typography>
-                                                </CardContent>
-                                            </CardActionArea>
-                                        </Card>
+                    <TableContainer>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell
+                                        style={{
+                                            paddingLeft: '32px',
+                                        }}
+                                    >
+                                        Sources
                                     </TableCell>
                                 </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
+                            </TableHead>
+                            <TableBody>
+                                {senderData.map(item => (
+                                    <TableRow key={item.id}>
+                                        <TableCell component="th" scope="row">
+                                            {item.label}
+                                        </TableCell>
+                                        <TableCell>
+                                            <Card sx={{ maxWidth: 200 }}>
+                                                <CardActionArea>
+                                                    <CardContent>
+                                                        <Typography
+                                                            gutterBottom
+                                                            variant="h5"
+                                                            component="div"
+                                                        >
+                                                            Lizard
+                                                        </Typography>
+                                                    </CardContent>
+                                                </CardActionArea>
+                                            </Card>
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    <br />
+                    <PaginationButtons
+                        pagination={pagination}
+                        nextPage={nextPage}
+                        {...props}
+                    />
+                    <TableContainer>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell
+                                        style={{
+                                            paddingLeft: '32px',
+                                        }}
+                                    >
+                                        Destinations
+                                    </TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {receiverData.map(item => (
+                                    <TableRow key={item.id}>
+                                        <TableCell component="th" scope="row">
+                                            {item.label}
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
                     <br />
                     <PaginationButtons
                         pagination={pagination}
