@@ -91,11 +91,12 @@ import {
     Table,
     TableBody,
     TableCell,
+    TableContainer,
     TableHead,
     TableRow,
     Typography,
 } from '@material-ui/core';
-import { Loading, ShowButton, Title } from 'react-admin';
+import { Loading, Title } from 'react-admin';
 //import ActiveField from '../../components/ActiveField';
 import FilterPanel, {
     AutocompleteFilter,
@@ -126,13 +127,13 @@ const RoutingPage = props => {
     };*/
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
-    const { data: senderData, loaded: senderLoaded, pagination: setSenderPaginationURL, url: senderURL } = useGetList({
+    const { data: senderData, loaded: senderLoaded, pagination: senderPagination, url: senderURL } = useGetList({
         ...props,
         resource : 'senders',
         filter,
         paginationURL: senderPaginationURL,
     });
-    if (!loaded) return <Loading />;
+    if (!senderLoaded) return <Loading />;
 
     const { data: receiverData, loaded: receiverLoaded, pagination: receiverPagination, url: receiverURL } = useGetList({
         ...props,
@@ -140,7 +141,7 @@ const RoutingPage = props => {
         filter,
         paginationURL: receiverPaginationURL,
     });
-    if (!loaded) return <Loading />;
+    if (!receiverLoaded) return <Loading />;
 
     const nextPage = label => {
         setSenderPaginationURL(senderPaginationURL[label]);
@@ -149,10 +150,6 @@ const RoutingPage = props => {
 
     return (
         <>
-            <div style={{ display: 'flex' }}>
-                <span style={{ flexGrow: 1 }} />
-                <ListActions url={url} />
-            </div>
             <Card>
                 <Title title={'Routing'} />
                 <CardContent>
@@ -213,7 +210,7 @@ const RoutingPage = props => {
                     </TableContainer>
                     <br />
                     <PaginationButtons
-                        pagination={pagination}
+                        senderPagination={senderPagination}
                         nextPage={nextPage}
                         {...props}
                     />
@@ -258,7 +255,7 @@ const RoutingPage = props => {
                     </TableContainer>
                     <br />
                     <PaginationButtons
-                        pagination={pagination}
+                        receiverPagination={receiverPagination}
                         nextPage={nextPage}
                         {...props}
                     />
