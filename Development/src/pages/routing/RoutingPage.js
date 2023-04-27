@@ -133,7 +133,6 @@ const RoutingPage = props => {
         filter,
         paginationURL: senderPaginationURL,
     });
-    if (!senderLoaded) return <Loading />;
 
     const sendernextPage = label => {
         setSenderPaginationURL(senderPaginationURL[label]);
@@ -145,11 +144,14 @@ const RoutingPage = props => {
         filter,
         paginationURL: receiverPaginationURL,
     });
-    if (!receiverLoaded) return <Loading />;
 
     const receivernextPage = label => {
         setReceiverPaginationURL(receiverPaginationURL[label]);
     };
+
+    if (!senderLoaded || !receiverLoaded) {
+        return <Loading />;
+    }
 
     return (
         <>
