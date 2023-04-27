@@ -127,7 +127,7 @@ const RoutingPage = props => {
     };*/
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
-    const { 
+    const {
         data: senderData,
         loaded: senderLoaded,
         pagination: senderPagination,
@@ -143,7 +143,7 @@ const RoutingPage = props => {
         setSenderPaginationURL(senderPaginationURL[label]);
     };
 
-    const { 
+    const {
         data: receiverData,
         loaded: receiverLoaded,
         pagination: receiverPagination,
@@ -205,8 +205,8 @@ const RoutingPage = props => {
                                 <TableBody>
                                     {senderData.map(item => (
                                         <TableRow key={item.id}>
-                                            <TableCell 
-                                                component="th" 
+                                            <TableCell
+                                                component="th"
                                                 scope="row"
                                             >
                                                 {item.label}
@@ -270,8 +270,8 @@ const RoutingPage = props => {
                                 <TableBody>
                                     {receiverData.map(item => (
                                         <TableRow key={item.id}>
-                                            <TableCell 
-                                                component="th" 
+                                            <TableCell
+                                                component="th"
                                                 scope="row"
                                             >
                                                 {item.label}
