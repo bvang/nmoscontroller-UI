@@ -143,13 +143,20 @@ const RoutingPage = props => {
     });
     if (!receiverLoaded) return <Loading />;
 
-    const nextPage = label => {
+    const sendernextPage = label => {
         setSenderPaginationURL(senderPaginationURL[label]);
+    };
+
+    const receivernextPage = label => {
         setReceiverPaginationURL(receiverPaginationURL[label]);
     };
 
     return (
         <>
+            <div style={{ display: 'flex' }}>
+                <span style={{ flexGrow: 1 }} />
+                <ListActions url={senderURL} />
+            </div>
             <Card>
                 <Title title={'Routing'} />
                 <CardContent>
@@ -210,8 +217,8 @@ const RoutingPage = props => {
                     </TableContainer>
                     <br />
                     <PaginationButtons
-                        senderPagination={senderPagination}
-                        nextPage={nextPage}
+                        pagination={senderPagination}
+                        nextPage={sendernextPage}
                         {...props}
                     />
                     <FilterPanel filter={filter} setFilter={setFilter}>
@@ -255,8 +262,8 @@ const RoutingPage = props => {
                     </TableContainer>
                     <br />
                     <PaginationButtons
-                        receiverPagination={receiverPagination}
-                        nextPage={nextPage}
+                        pagination={receiverPagination}
+                        nextPage={receivernextPage}
                         {...props}
                     />
                     </List>
