@@ -157,7 +157,6 @@ const RoutingPage = props => {
                 <Title title={'Routing'} />
                 <CardContent>
                     <List>
-                        
                     <FilterPanel filter={filter} setFilter={setFilter}>
                         <StringFilter source="label" />
                         <StringFilter source="description" />
@@ -218,6 +217,21 @@ const RoutingPage = props => {
                         nextPage={nextPage}
                         {...props}
                     />
+                    <FilterPanel filter={filter} setFilter={setFilter}>
+                        <StringFilter source="label" />
+                        <StringFilter source="description" />
+                        <AutocompleteFilter
+                            source="transport"
+                            {...parameterAutocompleteProps(TRANSPORTS)}
+                        />
+                        {queryVersion() >= 'v1.2' && (
+                            <BooleanFilter
+                                source="subscription.active"
+                                label="Active"
+                            />
+                        )}
+                        <StringFilter source="id" />
+                    </FilterPanel>
                     <TableContainer>
                         <Table>
                             <TableHead>
@@ -248,6 +262,7 @@ const RoutingPage = props => {
                         nextPage={nextPage}
                         {...props}
                     />
+                    </List>
                 </CardContent>
             </Card>
         </>
