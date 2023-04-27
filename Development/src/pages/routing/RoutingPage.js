@@ -135,6 +135,10 @@ const RoutingPage = props => {
     });
     if (!senderLoaded) return <Loading />;
 
+    const sendernextPage = label => {
+        setSenderPaginationURL(senderPaginationURL[label]);
+    };
+
     const { data: receiverData, loaded: receiverLoaded, pagination: receiverPagination, url: receiverURL } = useGetList({
         ...props,
          resource : 'receivers',
@@ -142,10 +146,6 @@ const RoutingPage = props => {
         paginationURL: receiverPaginationURL,
     });
     if (!receiverLoaded) return <Loading />;
-
-    const sendernextPage = label => {
-        setSenderPaginationURL(senderPaginationURL[label]);
-    };
 
     const receivernextPage = label => {
         setReceiverPaginationURL(receiverPaginationURL[label]);
@@ -156,6 +156,7 @@ const RoutingPage = props => {
             <div style={{ display: 'flex' }}>
                 <span style={{ flexGrow: 1 }} />
                 <ListActions url={senderURL} />
+                <ListActions url={receiverURL} />
             </div>
             <Card>
                 <Title title={'Routing'} />
