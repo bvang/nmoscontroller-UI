@@ -237,6 +237,7 @@ const RoutingPage = props => {
                             nextPage={sendernextPage}
                             {...props}
                         />
+                    </List>
                     <List>
                         <FilterPanel filter={filter} setFilter={setFilter}>
                             <StringFilter source="label" />
