@@ -127,9 +127,14 @@ const RoutingPage = props => {
     };*/
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
-    const { data: senderData, loaded: senderLoaded, pagination: senderPagination, url: senderURL } = useGetList({
+    const { 
+        data: senderData,
+        loaded: senderLoaded,
+        pagination: senderPagination,
+        url: senderURL,
+    } = useGetList({
         ...props,
-        resource : 'senders',
+        resource: 'senders',
         filter,
         paginationURL: senderPaginationURL,
     });
@@ -138,9 +143,14 @@ const RoutingPage = props => {
         setSenderPaginationURL(senderPaginationURL[label]);
     };
 
-    const { data: receiverData, loaded: receiverLoaded, pagination: receiverPagination, url: receiverURL } = useGetList({
+    const { 
+        data: receiverData,
+        loaded: receiverLoaded,
+        pagination: receiverPagination,
+        url: receiverURL,
+    } = useGetList({
         ...props,
-         resource : 'receivers',
+        resource: 'receivers',
         filter,
         paginationURL: receiverPaginationURL,
     });
@@ -164,111 +174,118 @@ const RoutingPage = props => {
                 <Title title={'Routing'} />
                 <CardContent>
                     <List>
-                    <FilterPanel filter={filter} setFilter={setFilter}>
-                        <StringFilter source="label" />
-                        <StringFilter source="description" />
-                        <AutocompleteFilter
-                            source="transport"
-                            {...parameterAutocompleteProps(TRANSPORTS)}
-                        />
-                        {queryVersion() >= 'v1.2' && (
-                            <BooleanFilter
-                                source="subscription.active"
-                                label="Active"
+                        <FilterPanel filter={filter} setFilter={setFilter}>
+                            <StringFilter source="label" />
+                            <StringFilter source="description" />
+                            <AutocompleteFilter
+                                source="transport"
+                                {...parameterAutocompleteProps(TRANSPORTS)}
                             />
-                        )}
-                        <StringFilter source="id" />
-                    </FilterPanel>
-                    <TableContainer>
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell
-                                        style={{
-                                            paddingLeft: '32px',
-                                        }}
-                                    >
-                                        Sources
-                                    </TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {senderData.map(item => (
-                                    <TableRow key={item.id}>
-                                        <TableCell component="th" scope="row">
-                                            {item.label}
-                                        </TableCell>
-                                        <TableCell>
-                                            <Card sx={{ maxWidth: 200 }}>
-                                                <CardActionArea>
-                                                    <CardContent>
-                                                        <Typography
-                                                            gutterBottom
-                                                            variant="h5"
-                                                            component="div"
-                                                        >
-                                                            Lizard
-                                                        </Typography>
-                                                    </CardContent>
-                                                </CardActionArea>
-                                            </Card>
+                            {queryVersion() >= 'v1.2' && (
+                                <BooleanFilter
+                                    source="subscription.active"
+                                    label="Active"
+                                />
+                            )}
+                            <StringFilter source="id" />
+                        </FilterPanel>
+                        <TableContainer>
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell
+                                            style={{
+                                                paddingLeft: '32px',
+                                            }}
+                                        >
+                                            Sources
                                         </TableCell>
                                     </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                    <br />
-                    <PaginationButtons
-                        pagination={senderPagination}
-                        nextPage={sendernextPage}
-                        {...props}
-                    />
-                    <FilterPanel filter={filter} setFilter={setFilter}>
-                        <StringFilter source="label" />
-                        <StringFilter source="description" />
-                        <AutocompleteFilter
-                            source="transport"
-                            {...parameterAutocompleteProps(TRANSPORTS)}
+                                </TableHead>
+                                <TableBody>
+                                    {senderData.map(item => (
+                                        <TableRow key={item.id}>
+                                            <TableCell 
+                                                component="th" 
+                                                scope="row"
+                                            >
+                                                {item.label}
+                                            </TableCell>
+                                            <TableCell>
+                                                <Card sx={{ maxWidth: 200 }}>
+                                                    <CardActionArea>
+                                                        <CardContent>
+                                                            <Typography
+                                                                gutterBottom
+                                                                variant="h5"
+                                                                component="div"
+                                                            >
+                                                                Lizard
+                                                            </Typography>
+                                                        </CardContent>
+                                                    </CardActionArea>
+                                                </Card>
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                        <br />
+                        <PaginationButtons
+                            pagination={senderPagination}
+                            nextPage={sendernextPage}
+                            {...props}
                         />
-                        {queryVersion() >= 'v1.2' && (
-                            <BooleanFilter
-                                source="subscription.active"
-                                label="Active"
+                    <List>
+                        <FilterPanel filter={filter} setFilter={setFilter}>
+                            <StringFilter source="label" />
+                            <StringFilter source="description" />
+                            <AutocompleteFilter
+                                source="transport"
+                                {...parameterAutocompleteProps(TRANSPORTS)}
                             />
-                        )}
-                        <StringFilter source="id" />
-                    </FilterPanel>
-                    <TableContainer>
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell
-                                        style={{
-                                            paddingLeft: '32px',
-                                        }}
-                                    >
-                                        Destinations
-                                    </TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {receiverData.map(item => (
-                                    <TableRow key={item.id}>
-                                        <TableCell component="th" scope="row">
-                                            {item.label}
+                            {queryVersion() >= 'v1.2' && (
+                                <BooleanFilter
+                                    source="subscription.active"
+                                    label="Active"
+                                />
+                            )}
+                            <StringFilter source="id" />
+                        </FilterPanel>
+                        <TableContainer>
+                            <Table>
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell
+                                            style={{
+                                                paddingLeft: '32px',
+                                            }}
+                                        >
+                                            Destinations
                                         </TableCell>
                                     </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
-                    </TableContainer>
-                    <br />
-                    <PaginationButtons
-                        pagination={receiverPagination}
-                        nextPage={receivernextPage}
-                        {...props}
-                    />
+                                </TableHead>
+                                <TableBody>
+                                    {receiverData.map(item => (
+                                        <TableRow key={item.id}>
+                                            <TableCell 
+                                                component="th" 
+                                                scope="row"
+                                            >
+                                                {item.label}
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
+                        <br />
+                        <PaginationButtons
+                            pagination={receiverPagination}
+                            nextPage={receivernextPage}
+                            {...props}
+                        />
                     </List>
                 </CardContent>
             </Card>
