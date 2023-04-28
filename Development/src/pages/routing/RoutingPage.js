@@ -157,7 +157,13 @@ const RoutingPage = props => {
                                                 paddingLeft: '32px',
                                             }}
                                         >
-                                            Sources
+                                            <Typography
+                                                gutterBottom
+                                                variant="h5"
+                                                component="div"
+                                            >
+                                                Sources
+                                            </Typography>
                                         </TableCell>
                                     </TableRow>
                                 </TableHead>
@@ -235,7 +241,13 @@ const RoutingPage = props => {
                                                 paddingLeft: '32px',
                                             }}
                                         >
-                                            Destinations
+                                            <Typography
+                                                gutterBottom
+                                                variant="h5"
+                                                component="div"
+                                            >
+                                                Destinations
+                                            </Typography>
                                         </TableCell>
                                     </TableRow>
                                 </TableHead>
