@@ -103,10 +103,10 @@ const RoutingPage = props => {
     };
 
     const handleClickCopy = async () => {
-        const notify = useNotify();
+        //const notify = useNotify();
         if (senderSDPData.manifest_href) {
             copy(senderSDPData.manifest_href).then(() => {
-                notify('Manifest href copied');
+                console.log('Manifest href copied');
             });
             return;
         }
@@ -116,7 +116,7 @@ const RoutingPage = props => {
             const data = response.data;
             setSenderSDPData({manifest_href: data});
             copy(data).then(() => {
-                notify('Manifest href copied');
+                console.log('Manifest href copied');
             });
         } catch (error) {
             console.error(error);
