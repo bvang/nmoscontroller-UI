@@ -102,8 +102,8 @@ const RoutingPage = props => {
         }
     };
 
+    const notify = useNotify();
     const handleClickCopy = async () => {
-        const notify = useNotify();
         if (senderSDPData.manifest_href) {
             copy(senderSDPData.manifest_href).then(() => {
                 notify('Manifest href copied');
@@ -122,9 +122,6 @@ const RoutingPage = props => {
             console.error(error);
         }
     };
-
-
-
 
     return (
         <>
