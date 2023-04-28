@@ -189,7 +189,9 @@ const RoutingPage = props => {
                                                                 {item.label}
                                                             </Typography>
                                                             <Typography>
-                                                                {item.manifest_href}
+                                                                {
+                                                                    item.manifest_href
+                                                                }
                                                             </Typography>
                                                         </CardContent>
                                                     </CardActionArea>
@@ -259,8 +261,6 @@ const RoutingPage = props => {
                                                             <Typography>
                                                                 {item.label}
                                                             </Typography>
-                                                            <Typography>
-                                                                {item.manifest_href}
                                                             </Typography>
                                                             {
                                                                 senderSDPData.manifest_href
