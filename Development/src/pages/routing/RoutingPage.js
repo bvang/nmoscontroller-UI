@@ -93,7 +93,6 @@ const RoutingPage = props => {
     }*/
 
     const handleClick = async (manifestHref) => {
-        const notify = useNotify();
         try {
             const response = await fetch(manifestHref);
             const data = await response.json();
@@ -104,6 +103,7 @@ const RoutingPage = props => {
     };
 
     const handleClickCopy = async () => {
+        const notify = useNotify();
         if (senderSDPData.manifest_href) {
             copy(senderSDPData.manifest_href).then(() => {
                 notify('Manifest href copied');
@@ -111,15 +111,15 @@ const RoutingPage = props => {
             return;
         }
 
-    try {
-        const response = await axios.get(senderData.manifest_href);
-        const data = response.data;
-        setSenderSDPData({manifest_href: data});
-        copy(data).then(() => {
-            notify('Manifest href copied');
-        });
+        try {
+            const response = await axios.get(senderData.manifest_href);
+            const data = response.data;
+            setSenderSDPData({manifest_href: data});
+            copy(data).then(() => {
+                notify('Manifest href copied');
+            });
         } catch (error) {
-        console.error(error);
+            console.error(error);
         }
     };
 
