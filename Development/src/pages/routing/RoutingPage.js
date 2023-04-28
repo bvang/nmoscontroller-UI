@@ -86,7 +86,6 @@ const RoutingPage = props => {
     };*/
 
     //Notification on loading sdp into destinations
-    const notify = useNotify();
     /*const handleCopy = () => {
         copy(get(record, '$transportfile')).then(() => {
             notify('Transport file copied');
@@ -94,6 +93,7 @@ const RoutingPage = props => {
     }*/
 
     const handleClick = async (manifestHref) => {
+        const notify = useNotify();
         try {
             const response = await fetch(manifestHref);
             const data = await response.json();
