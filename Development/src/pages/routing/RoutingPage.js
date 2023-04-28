@@ -95,8 +95,8 @@ const RoutingPage = props => {
         try {
             const response = await fetch(manifestHref);
             const data = await response.json();
-            console.log(data);// stocker le contenu de l'API dans une variable
-        }   catch (error) {
+            console.log(data); // stocker le contenu de l'API dans une variable
+        } catch (error) {
             console.error(error);
         }
     };
@@ -173,7 +173,8 @@ const RoutingPage = props => {
                                                         onClick={() =>
                                                             handleClick(
                                                                 item.manifest_href
-                                                            )}
+                                                            )
+                                                        }
                                                     >
                                                         <CardContent>
                                                             {item.label}
