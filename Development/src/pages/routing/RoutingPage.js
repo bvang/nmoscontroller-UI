@@ -93,8 +93,8 @@ const RoutingPage = props => {
 
     const handleClick = async manifestHref => {
         try {
-            const response = await fetch(manifestHref);
-            const data = await response.json();
+            const response = await axios.get(manifestHref);
+            const data = response.data;
             console.log(data); // stocker le contenu de l'API dans une variable
         } catch (error) {
             console.error(error);
