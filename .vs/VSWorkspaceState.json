@@ -3,8 +3,10 @@
     "",
     "\\Development",
     "\\Development\\src",
-    "\\Development\\src\\pages"
+    "\\Development\\src\\pages",
+    "\\Development\\src\\pages\\receivers",
+    "\\Development\\src\\pages\\senders"
   ],
-  "SelectedNode": "\\Development\\src",
+  "SelectedNode": "\\Development\\src\\pages\\senders\\SendersShow.js",
   "PreviewInSolutionExplorer": false
 }

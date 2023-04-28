@@ -91,9 +91,11 @@ const RoutingPage = props => {
         });
     }*/
 
+    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
+
     const handleClick = async manifestHref => {
         try {
-            const response = await axios.get(manifestHref);
+            const response = await axios.get(corsProxy + manifestHref);
             const data = response.data;
             console.log(data); // stocker le contenu de l'API dans une variable
         } catch (error) {
@@ -183,22 +185,11 @@ const RoutingPage = props => {
                                                         }
                                                     >
                                                         <CardContent>
-                                                            {item.label}
-                                                            {item.manifest_href}
-                                                        </CardContent>
-                                                    </CardActionArea>
-                                                </Card>
-                                            </TableCell>
-                                            <TableCell>
-                                                <Card sx={{ maxWidth: 100 }}>
-                                                    <CardActionArea>
-                                                        <CardContent>
-                                                            <Typography
-                                                                gutterBottom
-                                                                variant="h5"
-                                                                component="div"
-                                                            >
-                                                                Lizard
+                                                            <Typography>
+                                                                {item.label}
+                                                            </Typography>
+                                                            <Typography>
+                                                                {item.manifest_href}
                                                             </Typography>
                                                         </CardContent>
                                                     </CardActionArea>
@@ -265,8 +256,12 @@ const RoutingPage = props => {
                                                         }
                                                     >
                                                         <CardContent>
-                                                            {item.label}
-                                                            {item.manifest_href}
+                                                            <Typography>
+                                                                {item.label}
+                                                            </Typography>
+                                                            <Typography>
+                                                                {item.manifest_href}
+                                                            </Typography>
                                                             {
                                                                 senderSDPData.manifest_href
                                                             }
