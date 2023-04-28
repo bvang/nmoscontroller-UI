@@ -12,7 +12,7 @@ import {
     TableRow,
     Typography,
 } from '@material-ui/core';
-import { Loading, Title, useGetOne, useNotify } from 'react-admin';
+import { Loading, Title, useNotify } from 'react-admin';
 //import ActiveField from '../../components/ActiveField';
 import FilterPanel, {
     AutocompleteFilter,
@@ -27,14 +27,15 @@ import PaginationButtons from '../../components/PaginationButtons';
 import ListActions from '../../components/ListActions';
 import useGetList from '../../components/useGetList';
 import { queryVersion, useJSONSetting } from '../../settings';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 import axios from 'axios';
+import copy from 'copy-to-clipboard';
 
 const RoutingPage = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
 
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
+    const [senderSDPData, setSenderSDPData] = useState({manifest_href: null});
     const {
         data: senderData,
         loaded: senderLoaded,
@@ -85,7 +86,7 @@ const RoutingPage = props => {
     };*/
 
     //Notification on loading sdp into destinations
-    const notify = useNotify();
+    //const notify = useNotify();
     /*const handleCopy = () => {
         copy(get(record, '$transportfile')).then(() => {
             notify('Transport file copied');
@@ -102,8 +103,6 @@ const RoutingPage = props => {
         }
     };
 
-    const [senderSDPData, setSenderSDPData] = useState({manifest_href: null});
-
     const handleClickCopy = async () => {
         if (senderSDPData.manifest_href) {
             copy(senderSDPData.manifest_href).then(() => {
@@ -113,7 +112,7 @@ const RoutingPage = props => {
         }
 
     try {
-        const response = await axios.get(item.manifest_href);
+        const response = await axios.get(senderData.manifest_href);
         const data = response.data;
         setSenderSDPData({manifest_href: data});
         copy(data).then(() => {
