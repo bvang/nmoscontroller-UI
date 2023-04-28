@@ -261,10 +261,11 @@ const RoutingPage = props => {
                                                             <Typography>
                                                                 {item.label}
                                                             </Typography>
+                                                            <Typography>
+                                                                {
+                                                                    senderSDPData.manifest_href
+                                                                }
                                                             </Typography>
-                                                            {
-                                                                senderSDPData.manifest_href
-                                                            }
                                                         </CardContent>
                                                     </CardActionArea>
                                                 </Card>
