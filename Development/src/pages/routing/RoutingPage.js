@@ -86,7 +86,7 @@ const RoutingPage = props => {
     };*/
 
     //Notification on loading sdp into destinations
-    //const notify = useNotify();
+    const notify = useNotify();
     /*const handleCopy = () => {
         copy(get(record, '$transportfile')).then(() => {
             notify('Transport file copied');
