@@ -12,7 +12,7 @@ import {
     TableRow,
     Typography,
 } from '@material-ui/core';
-import { Loading, Title/*, useNotify*/ } from 'react-admin';
+import { Loading, Title } from 'react-admin';
 //import ActiveField from '../../components/ActiveField';
 import FilterPanel, {
     AutocompleteFilter,
@@ -35,7 +35,7 @@ const RoutingPage = props => {
 
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
-    const [senderSDPData, setSenderSDPData] = useState({manifest_href: null});
+    const [senderSDPData, setSenderSDPData] = useState({ manifest_href: null });
     const {
         data: senderData,
         loaded: senderLoaded,
@@ -71,7 +71,6 @@ const RoutingPage = props => {
     if (!senderLoaded || !receiverLoaded) {
         return <Loading />;
     }
-    
     /*const [selectedURL, setSelectedURL] = useState(null);
     const [selectedData, setSelectedData] = useState(null);
     const [copiedData, setCopiedData] = useState(null);
@@ -92,11 +91,11 @@ const RoutingPage = props => {
         });
     }*/
 
-    const handleClick = async (manifestHref) => {
+    const handleClick = async manifestHref => {
         try {
             const response = await fetch(manifestHref);
             const data = await response.json();
-            console.log(data); // stocker le contenu de l'API dans une variable
+            console.log(data);// stocker le contenu de l'API dans une variable
         }   catch (error) {
             console.error(error);
         }
@@ -114,7 +113,7 @@ const RoutingPage = props => {
         try {
             const response = await axios.get(senderData.manifest_href);
             const data = response.data;
-            setSenderSDPData({manifest_href: data});
+            setSenderSDPData({ manifest_href: data });
             copy(data).then(() => {
                 console.log('Manifest href copied');
             });
@@ -171,7 +170,10 @@ const RoutingPage = props => {
                                             >
                                                 <Card sx={{ maxWidth: 100 }}>
                                                     <CardActionArea
-                                                        onClick={() => handleClick(item.manifest_href)}
+                                                        onClick={() =>
+                                                            handleClick(
+                                                                item.manifest_href
+                                                            )}
                                                     >
                                                         <CardContent>
                                                             {item.label}
@@ -245,12 +247,16 @@ const RoutingPage = props => {
                                             >
                                                 <Card sx={{ maxWidth: 100 }}>
                                                     <CardActionArea
-                                                        onClick={handleClickCopy}
+                                                        onClick={
+                                                            handleClickCopy
+                                                        }
                                                     >
                                                         <CardContent>
                                                             {item.label}
                                                             {item.manifest_href}
-                                                            {senderSDPData.manifest_href}
+                                                            {
+                                                                senderSDPData.manifest_href
+                                                            }
                                                         </CardContent>
                                                     </CardActionArea>
                                                 </Card>
