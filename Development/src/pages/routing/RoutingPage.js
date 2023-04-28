@@ -1,87 +1,3 @@
-/*import {
-    Card,
-    CardContent,
-    //List,
-    //ListItem,
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableRow,
-    //TextField,
-    //withStyles,
-} from '@material-ui/core';
-import { ShowButton, Title } from 'react-admin';
-import useGetList from '../../components/useGetList';
-
-/*const StyledListItem = withStyles(theme => ({
-    root: {
-        justifyContent: 'center',
-    },
-}))(ListItem);
-
-const StyledTextField = withStyles(theme => ({
-    root: {
-        width: 450,
-    },
-}))(TextField);
-
-const StyledDivider = withStyles(theme => ({
-    root: {
-        width: 450,
-    },
-}))(Divider);
-
-const selectOnFocus = event => event.target.select();
-
-const RoutingPage = props => {
-    const { data } = useGetList({
-        ...props,
-    });
-
-    return (
-        <div style={{ paddingTop: '24px' }}>
-            <Card>
-                <Title title={'Routing'} />
-                <CardContent>
-                    <Table>
-                        <TableHead>
-                            <TableRow>
-                                <TableCell
-                                    style={{
-                                        paddingLeft: '32px',
-                                    }}
-                                >
-                                    Sources
-                                </TableCell>
-                                <TableCell>Add Filters</TableCell>
-                                <TableCell>Search name...</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {data.map(item => (
-                                <TableRow key={item.id}>
-                                    <TableCell component="th" scope="row">
-                                        <ShowButton
-                                            style={{
-                                                textTransform: 'none',
-                                            }}
-                                            basePath="/senders"
-                                            record={item}
-                                            label={item.label}
-                                        />
-                                    </TableCell>
-                                </TableRow>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </CardContent>
-            </Card>
-        </div>
-    );
-};
-
-export default RoutingPage;*/
 import React, { useState } from 'react';
 import {
     Card,
@@ -96,7 +12,7 @@ import {
     TableRow,
     Typography,
 } from '@material-ui/core';
-import { Loading, Title } from 'react-admin';
+import { Loading, Title, useGetOne, useNotify } from 'react-admin';
 //import ActiveField from '../../components/ActiveField';
 import FilterPanel, {
     AutocompleteFilter,
@@ -111,20 +27,11 @@ import PaginationButtons from '../../components/PaginationButtons';
 import ListActions from '../../components/ListActions';
 import useGetList from '../../components/useGetList';
 import { queryVersion, useJSONSetting } from '../../settings';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const RoutingPage = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
-    /*const [paginationURL, setPaginationURL] = useState(null);
-    const { data, loaded, pagination, url } = useGetList({
-        ...props,
-        filter,
-        paginationURL,
-    });
-    if (!loaded) return <Loading />;
 
-    const nextPage = label => {
-        setPaginationURL(pagination[label]);
-    };*/
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
     const {
@@ -162,6 +69,62 @@ const RoutingPage = props => {
     if (!senderLoaded || !receiverLoaded) {
         return <Loading />;
     }
+    
+    /*const [selectedURL, setSelectedURL] = useState(null);
+    const [selectedData, setSelectedData] = useState(null);
+    const [copiedData, setCopiedData] = useState(null);
+
+    const handleCardClick = (senderURL) => {
+        setSelectedURL(senderURL);
+        setSelectedData(null);
+
+        useGetOne('resourceName', senderURL)
+            .then(({ data }) => setSelectedData(data))
+            .catch(() => console.log('Error fetching data'));
+    };*/
+
+    //Notification on loading sdp into destinations
+    const notify = useNotify();
+    /*const handleCopy = () => {
+        copy(get(record, '$transportfile')).then(() => {
+            notify('Transport file copied');
+        });
+    }*/
+
+    const handleClick = async (manifestHref) => {
+        try {
+            const response = await fetch(manifestHref);
+            const data = await response.json();
+            console.log(data); // stocker le contenu de l'API dans une variable
+        }   catch (error) {
+            console.error(error);
+        }
+    };
+
+    const [senderSDPData, setSenderSDPData] = useState({manifest_href: null});
+
+    const handleClickCopy = async () => {
+        if (senderSDPData.manifest_href) {
+            copy(senderSDPData.manifest_href).then(() => {
+                notify('Manifest href copied');
+            });
+            return;
+        }
+
+    try {
+        const response = await axios.get(item.manifest_href);
+        const data = response.data;
+        setSenderSDPData({manifest_href: data});
+        copy(data).then(() => {
+            notify('Manifest href copied');
+        });
+        } catch (error) {
+        console.error(error);
+        }
+    };
+
+
+
 
     return (
         <>
@@ -209,10 +172,19 @@ const RoutingPage = props => {
                                                 component="th"
                                                 scope="row"
                                             >
-                                                {item.label}
+                                                <Card sx={{ maxWidth: 100 }}>
+                                                    <CardActionArea
+                                                        onClick={() => handleClick(item.manifest_href)}
+                                                    >
+                                                        <CardContent>
+                                                            {item.label}
+                                                            {item.manifest_href}
+                                                        </CardContent>
+                                                    </CardActionArea>
+                                                </Card>
                                             </TableCell>
                                             <TableCell>
-                                                <Card sx={{ maxWidth: 200 }}>
+                                                <Card sx={{ maxWidth: 100 }}>
                                                     <CardActionArea>
                                                         <CardContent>
                                                             <Typography
@@ -274,7 +246,17 @@ const RoutingPage = props => {
                                                 component="th"
                                                 scope="row"
                                             >
-                                                {item.label}
+                                                <Card sx={{ maxWidth: 100 }}>
+                                                    <CardActionArea
+                                                        onClick={handleClickCopy}
+                                                    >
+                                                        <CardContent>
+                                                            {item.label}
+                                                            {item.manifest_href}
+                                                            {senderSDPData.manifest_href}
+                                                        </CardContent>
+                                                    </CardActionArea>
+                                                </Card>
                                             </TableCell>
                                         </TableRow>
                                     ))}
