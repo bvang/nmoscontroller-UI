@@ -106,12 +106,11 @@ export const RoutingPage = props => {
         fetch(URL)
             .then(response => response.text())
             .then(data => {
-        // Process the API response data
-            console.log(data);
-        })
-        .catch(error => {
-            console.error(error);
-        });
+                console.log(data);
+            })
+            .catch(error => {
+                console.error(error);
+            });
     };
 
     const handleClickCopy = async () => {
