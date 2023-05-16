@@ -30,7 +30,15 @@ import { queryVersion, useJSONSetting } from '../../settings';
 import axios from 'axios';
 import copy from 'copy-to-clipboard';
 
-const RoutingPage = props => {
+export const RoutingPage = props => {
+    return (
+        <TransportFileProvider>
+            <RoutingPageView {...props} />
+        </TransportFileProvider>
+    );
+};
+
+const RoutingPageView = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
 
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
@@ -91,16 +99,19 @@ const RoutingPage = props => {
         });
     }*/
 
-    const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-
-    const handleClick = async manifestHref => {
-        try {
-            const response = await axios.get(corsProxy + manifestHref);
-            const data = response.data;
-            console.log(data); // stocker le contenu de l'API dans une variable
-        } catch (error) {
+    const handleClick = async (manifestHref, id) => {
+        const parts = manifestHref.split('/');
+        const baseUrl = parts.slice(0, 3).join('/') + '/';
+        const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
+        fetch(URL)
+            .then(response => response.text())
+            .then(data => {
+        // Process the API response data
+            console.log(data);
+        })
+        .catch(error => {
             console.error(error);
-        }
+        });
     };
 
     const handleClickCopy = async () => {
@@ -180,7 +191,7 @@ const RoutingPage = props => {
                                                     <CardActionArea
                                                         onClick={() =>
                                                             handleClick(
-                                                                item.manifest_href
+                                                                item.manifest_href, item.id
                                                             )
                                                         }
                                                     >
