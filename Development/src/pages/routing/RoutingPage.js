@@ -19,7 +19,6 @@ import FilterPanel, {
     BooleanFilter,
     StringFilter,
 } from '../../components/FilterPanel';
-import { TransportFileProvider } from '../../components/TransportFileContext';
 import {
     TRANSPORTS,
     parameterAutocompleteProps,
@@ -31,15 +30,15 @@ import { queryVersion, useJSONSetting } from '../../settings';
 import axios from 'axios';
 import copy from 'copy-to-clipboard';
 
-export const RoutingPage = props => {
+/*const RoutingPage = props => {
     return (
         <TransportFileProvider>
             <RoutingPageView {...props} />
         </TransportFileProvider>
     );
-};
+};*/
 
-const RoutingPageView = props => {
+export const RoutingPage = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
 
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
