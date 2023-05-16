@@ -190,7 +190,8 @@ export const RoutingPage = props => {
                                                     <CardActionArea
                                                         onClick={() =>
                                                             handleClick(
-                                                                item.manifest_href, item.id
+                                                                item.manifest_href,
+                                                                item.id
                                                             )
                                                         }
                                                     >
