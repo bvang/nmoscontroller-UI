@@ -30,17 +30,9 @@ import { queryVersion, useJSONSetting } from '../../settings';
 import axios from 'axios';
 import copy from 'copy-to-clipboard';
 
-/*const RoutingPage = props => {
-    return (
-        <TransportFileProvider>
-            <RoutingPageView {...props} />
-        </TransportFileProvider>
-    );
-};*/
-
 export const RoutingPage = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
-
+    const [responseData, setResponseData] = useState(null);
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
     const [senderSDPData, setSenderSDPData] = useState({ manifest_href: null });
@@ -79,25 +71,13 @@ export const RoutingPage = props => {
     if (!senderLoaded || !receiverLoaded) {
         return <Loading />;
     }
-    /*const [selectedURL, setSelectedURL] = useState(null);
-    const [selectedData, setSelectedData] = useState(null);
-    const [copiedData, setCopiedData] = useState(null);
 
-    const handleCardClick = (senderURL) => {
-        setSelectedURL(senderURL);
-        setSelectedData(null);
-
-        useGetOne('resourceName', senderURL)
-            .then(({ data }) => setSelectedData(data))
-            .catch(() => console.log('Error fetching data'));
-    };*/
-
-    //Notification on loading sdp into destinations
-    /*const handleCopy = () => {
-        copy(get(record, '$transportfile')).then(() => {
-            notify('Transport file copied');
-        });
-    }*/
+    const {
+        data: devicesData,
+    } = useGetList({
+        ...props,
+        resource: 'devices',
+    });
 
     const handleClick = async (manifestHref, id) => {
         const parts = manifestHref.split('/');
@@ -105,19 +85,29 @@ export const RoutingPage = props => {
         const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
         fetch(URL)
             .then(response => response.text())
-            .then(data => {
+            .then(dataurl => {
+
+                const data = dataurl.replace(/\n/g, '\n').replace(/"/g, '\\"');
                 console.log(data);
+
+                setResponseData(data);
             })
             .catch(error => {
                 console.error(error);
             });
     };
 
-    const handleClickCopy = async () => {
+    const handleClickCopy = async (deviceId, id) => {//CHERCHER L'URL DU RECEIVER
         //const notify = useNotify();
+        console.log(devicesData.id);  //test
+        console.log(devicesData.label);
+        /*if(deviceId = devicesData.id) {
+            for every 
+        }*/
+        const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
         if (senderSDPData.manifest_href) {
             copy(senderSDPData.manifest_href).then(() => {
-                console.log('Manifest href copied');
+                console.log('Manifest href copied', responseData);
             });
             return;
         }
@@ -265,7 +255,10 @@ export const RoutingPage = props => {
                                                 <Card sx={{ maxWidth: 100 }}>
                                                     <CardActionArea
                                                         onClick={
-                                                            handleClickCopy
+                                                            handleClickCopy(
+                                                                item.device_id,
+                                                                item.id
+                                                            )
                                                         }
                                                     >
                                                         <CardContent>
