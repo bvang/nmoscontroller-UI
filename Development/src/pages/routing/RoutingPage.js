@@ -183,11 +183,11 @@ export const RoutingPage = props => {
             // Mettre à jour le champ "data" avec le contenu de l'URL
             const requestBody = {
                 activation: {
-                    mode: 'activate_immediate'
+                    mode: 'activate_immediate',
                 },
                 transport_file: {
                     data: responseData,
-                    type: 'application/sdp'
+                    type: 'application/sdp',
                 },
             };
             console.log(JSON.stringify(requestBody));
