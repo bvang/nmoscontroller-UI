@@ -100,7 +100,7 @@ export const RoutingPage = props => {
         console.log(devicesData.id); //test
         console.log(devicesData.label);
         /*if(deviceId = devicesData.id) {
-            for every 
+            for every
         }*/
         //const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
         if (senderSDPData.manifest_href) {
@@ -252,10 +252,12 @@ export const RoutingPage = props => {
                                             >
                                                 <Card sx={{ maxWidth: 100 }}>
                                                     <CardActionArea
-                                                        onClick={handleClickCopy(
-                                                            item.device_id,
-                                                            item.id
-                                                        )}
+                                                        onClick={() =>
+                                                            handleClickCopy(
+                                                                item.device_id,
+                                                                item.id
+                                                            )
+                                                        }
                                                     >
                                                         <CardContent>
                                                             <Typography>
