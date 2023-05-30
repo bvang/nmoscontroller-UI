@@ -27,12 +27,12 @@ import PaginationButtons from '../../components/PaginationButtons';
 import ListActions from '../../components/ListActions';
 import useGetList from '../../components/useGetList';
 import { queryVersion, useJSONSetting } from '../../settings';
-import axios from 'axios';
-import copy from 'copy-to-clipboard';
+//import axios from 'axios';
+//import copy from 'copy-to-clipboard';
 
 export const RoutingPage = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
-    const [responseData, setResponseData] = useState(null);
+    //const [responseData, setResponseData] = useState(null);
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
     //const [senderSDPData, setSenderSDPData] = useState({ manifest_href: null });
