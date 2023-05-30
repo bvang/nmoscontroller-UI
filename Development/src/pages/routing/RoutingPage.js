@@ -35,7 +35,7 @@ export const RoutingPage = props => {
     const [responseData, setResponseData] = useState(null);
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
-    //const [senderSDPData, setSenderSDPData] = useState({ manifest_href: null });
+    const [senderSDPData, setSenderSDPData] = useState({ manifest_href: null });
     const {
         data: senderData,
         loaded: senderLoaded,
