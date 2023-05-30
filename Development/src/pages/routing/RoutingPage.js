@@ -94,6 +94,69 @@ export const RoutingPage = props => {
                 console.error(error);
             });
     };
+    function createMatchingCards(receiverData, devicesData) {
+        const matchingItems = [];
+
+        receiverData.forEach(item1 => {
+            devicesData.forEach(item2 => {
+                if (item1.id === item2.id) {
+                    matchingItems.push(
+                        <Card key={`${item1.id}-${item2.id}`}>
+                            <CardContent>
+                                <Typography variant="h5">{item1.id}</Typography>
+                                <Typography variant="subtitle1">{item2.id}</Typography>
+                            </CardContent>
+                        </Card>
+                    );
+                }
+            });
+        });
+        return matchingItems;
+    }
+
+
+                                /*<TableBody> ANCIEN CODE
+                                    {receiverData.map(item1 => (
+                                        <TableRow key={item1.id}>
+                                            {devicesData.map(item2 => (
+                                                <TableCell
+                                                    component="th"
+                                                    scope="row"
+                                                    key={item2.id}
+                                                >
+                                                    <Card
+                                                        sx={{
+                                                            maxWidth: 100,
+                                                        }}
+                                                    >
+                                                        <CardActionArea
+                                                            onClick={() =>
+                                                                handleClickCopy(
+                                                                    //URL = deviceData/$id.controls.href
+                                                                    item1.device_id,
+                                                                    item1.id
+                                                                )
+                                                            }
+                                                        >
+                                                            <CardContent>
+                                                                <Typography>
+                                                                    {
+                                                                        item1.label
+                                                                    }
+                                                                </Typography>
+                                                                <Typography>
+                                                                    {
+                                                                        item2.label
+                                                                    }
+                                                                </Typography>
+                                                            </CardContent>
+                                                        </CardActionArea>
+                                                    </Card>
+                                                </TableCell>
+                                            ))}
+                                        </TableRow>
+                                    ))}
+                                </TableBody>*/
 
     const handleClickCopy = async (deviceId, id) => {
         //CHERCHER L'URL DU RECEIVER
@@ -246,44 +309,11 @@ export const RoutingPage = props => {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {receiverData.map(item1 => (
-                                        <TableRow key={item1.id}>
-                                            {devicesData.map(item2 => (
-                                                <TableCell
-                                                    component="th"
-                                                    scope="row"
-                                                    key={item2.id}
-                                                >
-                                                    <Card
-                                                        sx={{
-                                                            maxWidth: 100,
-                                                        }}
-                                                    >
-                                                        <CardActionArea
-                                                            onClick={() =>
-                                                                handleClickCopy(
-                                                                    //URL = deviceData/$id.controls.href
-                                                                    item1.device_id,
-                                                                    item1.id
-                                                                )
-                                                            }
-                                                        >
-                                                            <CardContent>
-                                                                <Typography>
-                                                                    {
-                                                                        item1.label
-                                                                    }
-                                                                </Typography>
-                                                                <Typography>
-                                                                    {
-                                                                        item2.label
-                                                                    }
-                                                                </Typography>
-                                                            </CardContent>
-                                                        </CardActionArea>
-                                                    </Card>
-                                                </TableCell>
-                                            ))}
+                                    {createMatchingCards(receiverData, devicesData).map((card, index) => (
+                                        <TableRow key={index}>
+                                            <TableCell component="th" scope="row">
+                                                {card}
+                                            </TableCell>
                                         </TableRow>
                                     ))}
                                 </TableBody>
