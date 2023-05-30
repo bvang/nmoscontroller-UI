@@ -67,6 +67,7 @@ export const RoutingPage = props => {
     const { data: devicesData } = useGetList({
         ...props,
         resource: 'devices',
+        filter,
     });
 
     const receivernextPage = label => {
@@ -103,6 +104,7 @@ export const RoutingPage = props => {
             for every
         }*/
         //const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
+        //URL = deviceData/$id.controls.href
         if (senderSDPData.manifest_href) {
             copy(senderSDPData.manifest_href).then(() => {
                 console.log('Manifest href copied', responseData);
@@ -254,6 +256,7 @@ export const RoutingPage = props => {
                                                     <CardActionArea
                                                         onClick={() =>
                                                             handleClickCopy(
+                                                                //URL = deviceData/$id.controls.href
                                                                 item.device_id,
                                                                 item.id
                                                             )
