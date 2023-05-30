@@ -102,12 +102,22 @@ export const RoutingPage = props => {
                 if (item1.id === item2.id) {
                     matchingItems.push(
                         <Card key={`${item1.id}-${item2.id}`}>
-                            <CardContent>
-                                <Typography variant="h5">{item1.id}</Typography>
-                                <Typography variant="subtitle1">
-                                    {item2.id}
-                                </Typography>
-                            </CardContent>
+                            <CardActionArea
+                                onClick={() =>
+                                    handleClickCopy(
+                                    //URL = deviceData/$id.controls.href
+                                        item1.device_id,
+                                        item1.id
+                                    )
+                                }
+                            >
+                                <CardContent>
+                                    <Typography variant="h5">{item1.id}</Typography>
+                                    <Typography variant="subtitle1">
+                                        {item2.id}
+                                    </Typography>
+                                </CardContent>
+                            </CardActionArea>
                         </Card>
                     );
                 }
