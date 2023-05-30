@@ -35,7 +35,7 @@ export const RoutingPage = props => {
     const [responseData, setResponseData] = useState(null);
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
-    const [senderSDPData, setSenderSDPData] = useState({ manifest_href: null });
+    //const [senderSDPData, setSenderSDPData] = useState({ manifest_href: null });
     const {
         data: senderData,
         loaded: senderLoaded,
@@ -105,7 +105,7 @@ export const RoutingPage = props => {
         }*/
         //const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
         //URL = deviceData/$id.controls.href
-        if (senderSDPData.manifest_href) {
+        /*if (senderSDPData.manifest_href) {
             copy(senderSDPData.manifest_href).then(() => {
                 console.log('Manifest href copied', responseData);
             });
@@ -121,7 +121,8 @@ export const RoutingPage = props => {
             });
         } catch (error) {
             console.error(error);
-        }
+        }*/
+
     };
 
     return (
@@ -246,8 +247,9 @@ export const RoutingPage = props => {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {receiverData.map(item => (
-                                        <TableRow key={item.id}>
+                                    {receiverData.map(item1, index => (
+                                        const item2 = devicesData[index];
+                                        <TableRow key={index}>
                                             <TableCell
                                                 component="th"
                                                 scope="row"
@@ -257,18 +259,18 @@ export const RoutingPage = props => {
                                                         onClick={() =>
                                                             handleClickCopy(
                                                                 //URL = deviceData/$id.controls.href
-                                                                item.device_id,
-                                                                item.id
+                                                                item1.device_id,
+                                                                item1.id
                                                             )
                                                         }
                                                     >
                                                         <CardContent>
                                                             <Typography>
-                                                                {item.label}
+                                                                {item1.label},
                                                             </Typography>
                                                             <Typography>
                                                                 {
-                                                                    senderSDPData.manifest_href
+                                                                    {item2.id}
                                                                 }
                                                             </Typography>
                                                         </CardContent>
