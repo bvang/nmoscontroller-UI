@@ -64,8 +64,7 @@ export const RoutingPage = props => {
         paginationURL: receiverPaginationURL,
     });
 
-    const {
-     data: devicesData,
+    const { data: devicesData,
     } = useGetList({
         ...props,
         resource: 'devices',
@@ -96,7 +95,8 @@ export const RoutingPage = props => {
             });
     };
 
-    const handleClickCopy = async (deviceId, id) => {//CHERCHER L'URL DU RECEIVER
+    const handleClickCopy = async (deviceId, id) => {
+        //CHERCHER L'URL DU RECEIVER
         //const notify = useNotify();
         console.log(devicesData.id); //test
         console.log(devicesData.label);
