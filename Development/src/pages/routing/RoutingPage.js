@@ -98,7 +98,7 @@ export const RoutingPage = props => {
 
     const handleClickCopy = async (deviceId, id) => {//CHERCHER L'URL DU RECEIVER
         //const notify = useNotify();
-        console.log(devicesData.id);//test
+        console.log(devicesData.id); //test
         console.log(devicesData.label);
         /*if(deviceId = devicesData.id) {
             for every 
@@ -253,12 +253,10 @@ export const RoutingPage = props => {
                                             >
                                                 <Card sx={{ maxWidth: 100 }}>
                                                     <CardActionArea
-                                                        onClick={
-                                                            handleClickCopy(
-                                                                item.device_id,
-                                                                item.id
-                                                            )
-                                                        }
+                                                        onClick={handleClickCopy(
+                                                            item.device_id,
+                                                            item.id
+                                                        )}
                                                     >
                                                         <CardContent>
                                                             <Typography>
