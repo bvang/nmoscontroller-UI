@@ -254,8 +254,10 @@ export const RoutingPage = props => {
                                                     scope="row"
                                                     key={item2.id}
                                                 >
-                                                    <Card sx={{ 
-                                                        maxWidth: 100 }}
+                                                    <Card
+                                                        sx={{ 
+                                                            maxWidth: 100,
+                                                        }}
                                                     >
                                                         <CardActionArea
                                                             onClick={() =>
