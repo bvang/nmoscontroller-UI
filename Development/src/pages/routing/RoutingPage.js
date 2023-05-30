@@ -65,7 +65,7 @@ export const RoutingPage = props => {
     });
 
     const {
-        data: devicesData,
+     data: devicesData,
     } = useGetList({
         ...props,
         resource: 'devices',
@@ -86,7 +86,6 @@ export const RoutingPage = props => {
         fetch(URL)
             .then(response => response.text())
             .then(dataurl => {
-
                 const data = dataurl.replace(/\n/g, '\n').replace(/"/g, '\\"');
                 console.log(data);
 
@@ -99,7 +98,7 @@ export const RoutingPage = props => {
 
     const handleClickCopy = async (deviceId, id) => {//CHERCHER L'URL DU RECEIVER
         //const notify = useNotify();
-        console.log(devicesData.id);  //test
+        console.log(devicesData.id);//test
         console.log(devicesData.label);
         /*if(deviceId = devicesData.id) {
             for every 
