@@ -35,7 +35,6 @@ export const RoutingPage = props => {
     const [responseData, setResponseData] = useState(null);
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
-    const [senderSDPData, setSenderSDPData] = useState({ manifest_href: null });
     const {
         data: senderData,
         loaded: senderLoaded,
@@ -94,14 +93,15 @@ export const RoutingPage = props => {
                 console.error(error);
             });
     };
+
     function createMatchingCards(receiverData, devicesData) {
         const matchingItems = [];
 
         receiverData.forEach(item1 => {
             devicesData.forEach(item2 => {
-                if (item1.id === item2.id) {
+                if (item1.device_id === item2.id) {
                     matchingItems.push(
-                        <Card key={`${item1.id}-${item2.id}`}>
+                        <Card key={`${item1.device_id}-${item2.id}`}>
                             <CardActionArea
                                 onClick={() =>
                                     handleClickCopy(
@@ -175,27 +175,44 @@ export const RoutingPage = props => {
         //const notify = useNotify();
         console.log(devicesData.id); //test
         console.log(devicesData.label);
+        console.log(responseData);
         /*if(deviceId = devicesData.id) {
             for every
         }*/
         //const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
         //URL = deviceData/$id.controls.href
-        if (senderSDPData.manifest_href) {
-            copy(senderSDPData.manifest_href).then(() => {
-                console.log('Manifest href copied', responseData);
-            });
-            return;
-        }
+        if (responseData) {
+            // Mettre à jour le champ "data" avec le contenu de l'URL
+            const requestBody = {
+                activation: {
+                    mode: "activate_immediate"
+                },
+                transport_file: {
+                    data: responseData,
+                    type: "application/sdp"
+                },
+            };
+            console.log(JSON.stringify(requestBody));
+            /*const updatedData = { ...responseData };
+            updatedData.data = 'Nouvelles données'; // Remplacez 'Nouvelles données' par la valeur souhaitée*/
 
-        try {
-            const response = await axios.get(senderData.manifest_href);
-            const data = response.data;
-            setSenderSDPData({ manifest_href: data });
-            copy(data).then(() => {
-                console.log('Manifest href copied');
-            });
-        } catch (error) {
-            console.error(error);
+            // Effectuer la requête PATCH pour mettre à jour le contenu de l'URL
+            fetch(patchURL, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestBody),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                })
+                .catch(error => {
+                    console.error('Erreur lors de la mise à jour du contenu de l\'URL :', error);
+                });
+        } else {
+            console.error('Aucun contenu à mettre à jour. Veuillez récupérer le contenu de l\'URL d\'abord.');
         }
     };
 
