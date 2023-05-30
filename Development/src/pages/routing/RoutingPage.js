@@ -27,8 +27,6 @@ import PaginationButtons from '../../components/PaginationButtons';
 import ListActions from '../../components/ListActions';
 import useGetList from '../../components/useGetList';
 import { queryVersion, useJSONSetting } from '../../settings';
-import axios from 'axios';
-import copy from 'copy-to-clipboard';
 
 export const RoutingPage = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
@@ -197,7 +195,7 @@ export const RoutingPage = props => {
             updatedData.data = 'Nouvelles données'; // Remplacez 'Nouvelles données' par la valeur souhaitée*/
 
             // Effectuer la requête PATCH pour mettre à jour le contenu de l'URL
-            fetch(patchURL, {
+            /*fetch(patchURL, { A REMETTRE POUR LE PATCH
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -213,7 +211,7 @@ export const RoutingPage = props => {
                 });
         } else {
             console.error('Aucun contenu à mettre à jour. Veuillez récupérer le contenu de l\'URL d\'abord.');
-        }
+        }*/
     };
 
     return (
