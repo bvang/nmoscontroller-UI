@@ -64,8 +64,7 @@ export const RoutingPage = props => {
         paginationURL: receiverPaginationURL,
     });
 
-    const { data: devicesData,
-    } = useGetList({
+    const { data: devicesData } = useGetList({
         ...props,
         resource: 'devices',
     });
