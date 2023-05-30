@@ -105,14 +105,16 @@ export const RoutingPage = props => {
                             <CardActionArea
                                 onClick={() =>
                                     handleClickCopy(
-                                    //URL = deviceData/$id.controls.href
+                                        //URL = deviceData/$id.controls.href
                                         item1.device_id,
                                         item1.id
                                     )
                                 }
                             >
                                 <CardContent>
-                                    <Typography variant="h5">{item1.id}</Typography>
+                                    <Typography variant="h5">
+                                        {item1.id}
+                                    </Typography>
                                     <Typography variant="subtitle1">
                                         {item2.id}
                                     </Typography>
@@ -125,7 +127,7 @@ export const RoutingPage = props => {
         });
         return matchingItems;
     }
-                                /*<TableBody> ANCIEN CODE
+/*<TableBody> ANCIEN CODE
                                     {receiverData.map(item1 => (
                                         <TableRow key={item1.id}>
                                             {devicesData.map(item2 => (
@@ -166,7 +168,8 @@ export const RoutingPage = props => {
                                             ))}
                                         </TableRow>
                                     ))}
-                                </TableBody>*/
+</TableBody>*/
+
     const handleClickCopy = async (deviceId, id) => {
         //CHERCHER L'URL DU RECEIVER
         //const notify = useNotify();
