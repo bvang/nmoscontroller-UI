@@ -255,7 +255,7 @@ export const RoutingPage = props => {
                                                     key={item2.id}
                                                 >
                                                     <Card
-                                                        sx={{ 
+                                                        sx={{
                                                             maxWidth: 100,
                                                         }}
                                                     >
