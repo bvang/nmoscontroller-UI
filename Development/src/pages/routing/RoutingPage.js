@@ -122,7 +122,6 @@ export const RoutingPage = props => {
         } catch (error) {
             console.error(error);
         }
-
     };
 
     return (
@@ -255,7 +254,9 @@ export const RoutingPage = props => {
                                                     scope="row"
                                                     key={item2.id}
                                                 >
-                                                    <Card sx={{ maxWidth: 100 }}>
+                                                    <Card sx={{ 
+                                                        maxWidth: 100 }}
+                                                    >
                                                         <CardActionArea
                                                             onClick={() =>
                                                                 handleClickCopy(
@@ -267,10 +268,14 @@ export const RoutingPage = props => {
                                                         >
                                                             <CardContent>
                                                                 <Typography>
-                                                                    {item1.label},
+                                                                    {
+                                                                        item1.label
+                                                                    }
                                                                 </Typography>
                                                                 <Typography>
-                                                                    {item2.label},
+                                                                    {
+                                                                        item2.label
+                                                                    }
                                                                 </Typography>
                                                             </CardContent>
                                                         </CardActionArea>
