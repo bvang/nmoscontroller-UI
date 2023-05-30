@@ -64,6 +64,13 @@ export const RoutingPage = props => {
         paginationURL: receiverPaginationURL,
     });
 
+    const {
+        data: devicesData,
+    } = useGetList({
+        ...props,
+        resource: 'devices',
+    });
+
     const receivernextPage = label => {
         setReceiverPaginationURL(receiverPaginationURL[label]);
     };
@@ -71,13 +78,6 @@ export const RoutingPage = props => {
     if (!senderLoaded || !receiverLoaded) {
         return <Loading />;
     }
-
-    const {
-        data: devicesData,
-    } = useGetList({
-        ...props,
-        resource: 'devices',
-    });
 
     const handleClick = async (manifestHref, id) => {
         const parts = manifestHref.split('/');
@@ -104,7 +104,7 @@ export const RoutingPage = props => {
         /*if(deviceId = devicesData.id) {
             for every 
         }*/
-        const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
+        //const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
         if (senderSDPData.manifest_href) {
             copy(senderSDPData.manifest_href).then(() => {
                 console.log('Manifest href copied', responseData);
