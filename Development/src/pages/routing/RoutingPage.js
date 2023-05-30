@@ -104,7 +104,9 @@ export const RoutingPage = props => {
                         <Card key={`${item1.id}-${item2.id}`}>
                             <CardContent>
                                 <Typography variant="h5">{item1.id}</Typography>
-                                <Typography variant="subtitle1">{item2.id}</Typography>
+                                <Typography variant="subtitle1">
+                                    {item2.id}
+                                </Typography>
                             </CardContent>
                         </Card>
                     );
@@ -113,8 +115,6 @@ export const RoutingPage = props => {
         });
         return matchingItems;
     }
-
-
                                 /*<TableBody> ANCIEN CODE
                                     {receiverData.map(item1 => (
                                         <TableRow key={item1.id}>
@@ -157,7 +157,6 @@ export const RoutingPage = props => {
                                         </TableRow>
                                     ))}
                                 </TableBody>*/
-
     const handleClickCopy = async (deviceId, id) => {
         //CHERCHER L'URL DU RECEIVER
         //const notify = useNotify();
@@ -309,9 +308,15 @@ export const RoutingPage = props => {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {createMatchingCards(receiverData, devicesData).map((card, index) => (
+                                    {createMatchingCards(
+                                        receiverData,
+                                        devicesData
+                                    ).map((card, index) => (
                                         <TableRow key={index}>
-                                            <TableCell component="th" scope="row">
+                                            <TableCell
+                                                component="th"
+                                                scope="row"
+                                            >
                                                 {card}
                                             </TableCell>
                                         </TableRow>
