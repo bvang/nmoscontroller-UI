@@ -247,36 +247,36 @@ export const RoutingPage = props => {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {receiverData.map(item1, index => (
-                                        const item2 = devicesData[index];
-                                        <TableRow key={index}>
-                                            <TableCell
-                                                component="th"
-                                                scope="row"
-                                            >
-                                                <Card sx={{ maxWidth: 100 }}>
-                                                    <CardActionArea
-                                                        onClick={() =>
-                                                            handleClickCopy(
-                                                                //URL = deviceData/$id.controls.href
-                                                                item1.device_id,
-                                                                item1.id
-                                                            )
-                                                        }
-                                                    >
-                                                        <CardContent>
-                                                            <Typography>
-                                                                {item1.label},
-                                                            </Typography>
-                                                            <Typography>
-                                                                {
-                                                                    {item2.id}
-                                                                }
-                                                            </Typography>
-                                                        </CardContent>
-                                                    </CardActionArea>
-                                                </Card>
-                                            </TableCell>
+                                    {receiverData.map(item1 => (
+                                        <TableRow key={item1.id}>
+                                            {devicesData.map(item2 => (
+                                                <TableCell
+                                                    component="th"
+                                                    scope="row"
+                                                    key={item2.id}
+                                                >
+                                                    <Card sx={{ maxWidth: 100 }}>
+                                                        <CardActionArea
+                                                            onClick={() =>
+                                                                handleClickCopy(
+                                                                    //URL = deviceData/$id.controls.href
+                                                                    item1.device_id,
+                                                                    item1.id
+                                                                )
+                                                            }
+                                                        >
+                                                            <CardContent>
+                                                                <Typography>
+                                                                    {item1.label},
+                                                                </Typography>
+                                                                <Typography>
+                                                                    {item2.label},
+                                                                </Typography>
+                                                            </CardContent>
+                                                        </CardActionArea>
+                                                    </Card>
+                                                </TableCell>
+                                            ))}
                                         </TableRow>
                                     ))}
                                 </TableBody>
