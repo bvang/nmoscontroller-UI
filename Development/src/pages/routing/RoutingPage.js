@@ -94,10 +94,13 @@ export const RoutingPage = props => {
 
     function createMatchingCards(receiverData, devicesData) {
         const matchingItems = [];
-
         receiverData.forEach(item1 => {
             devicesData.forEach(item2 => {
                 if (item1.device_id === item2.id) {
+                    const data = item2.controls;
+                    const desiredType = "urn:x-nmos:control:sr-ctrl/v1.1";
+                    const desiredHref = data.find(obj => obj.type === desiredType)?.href;
+                    console.log(desiredHref);
                     matchingItems.push(
                         <Card key={`${item1.device_id}-${item2.id}`}>
                             <CardActionArea
@@ -111,10 +114,13 @@ export const RoutingPage = props => {
                             >
                                 <CardContent>
                                     <Typography variant="h5">
-                                        {item1.id}
+                                        {item2.label}
                                     </Typography>
                                     <Typography variant="subtitle1">
-                                        {item2.id}
+                                        {item1.label}
+                                    </Typography>
+                                    <Typography variant="subtitle1">
+                                        {desiredHref}
                                     </Typography>
                                 </CardContent>
                             </CardActionArea>
