@@ -222,7 +222,7 @@ export const RoutingPage = props => {
                     console.error('Erreur lors de la mise à jour du contenu de l\'URL :', error);
                 });
         } else {
-            console.error('Aucun contenu à mettre à jour. Veuillez récupérer le contenu de l\'URL d\'abord.');*/
+            console.error('Aucun contenu à mettre à jour. Veuillez récupérer le contenu de l\'URL d\'abord.');
         }
     };
 
