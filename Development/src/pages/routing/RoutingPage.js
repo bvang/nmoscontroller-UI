@@ -12,7 +12,7 @@ import {
     TableRow,
     Typography,
 } from '@material-ui/core';
-import { Loading, Title } from 'react-admin';
+import { Loading, Title, useNotify } from 'react-admin';
 //import ActiveField from '../../components/ActiveField';
 import FilterPanel, {
     AutocompleteFilter,
@@ -113,8 +113,8 @@ export const RoutingPage = props => {
                                 onClick={() =>
                                     handleClickCopy(
                                         //URL = deviceData/$id.controls.href
-                                        item1.device_id,
-                                        item1.id
+                                        item1.id,
+                                        desiredHref
                                     )
                                 }
                             >
@@ -127,6 +127,9 @@ export const RoutingPage = props => {
                                     </Typography>
                                     <Typography variant="subtitle1">
                                         {desiredHref}
+                                    </Typography>
+                                    <Typography variant="subtitle1">
+                                        {item1.description}
                                     </Typography>
                                 </CardContent>
                             </CardActionArea>
@@ -180,16 +183,14 @@ export const RoutingPage = props => {
                                     ))}
     </TableBody>*/
 
-    const handleClickCopy = async (deviceId, id) => {
+    const handleClickCopy = async (id, desiredHref) => {
         //CHERCHER L'URL DU RECEIVER
-        //const notify = useNotify();
-        console.log(devicesData.id); //test
-        console.log(devicesData.label);
+        
+        console.log(id); //test
+        console.log(desiredHref);
         console.log(responseData);
-        /*if(deviceId = devicesData.id) {
-            for every
-        }*/
-        //const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
+
+        const URL = `${desiredHref}/single/receivers/${id}/staged/`;
         //URL = deviceData/$id.controls.href
         if (responseData) {
             // Mettre à jour le champ "data" avec le contenu de l'URL
@@ -201,13 +202,12 @@ export const RoutingPage = props => {
                     data: responseData,
                     type: 'application/sdp',
                 },
+            const notify = useNotify();
             };
             console.log(JSON.stringify(requestBody));
-            /*const updatedData = { ...responseData };
-            updatedData.data = 'Nouvelles données'; // Remplacez 'Nouvelles données' par la valeur souhaitée*/
 
             // Effectuer la requête PATCH pour mettre à jour le contenu de l'URL
-            /*fetch(patchURL, { A REMETTRE POUR LE PATCH
+            fetch(URL, { A REMETTRE POUR LE PATCH
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
