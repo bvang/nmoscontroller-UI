@@ -106,10 +106,7 @@ export const RoutingPage = props => {
                     const desiredHref = data.find(
                         obj => obj.type === desiredType
                     )?.href;
-                    console.log(
-                        'voici lurl du receiver : ',
-                        desiredHref
-                    );
+                    console.log('voici lurl du receiver : ', desiredHref);
                     matchingItems.push(
                         <Card key={`${item1.device_id}-${item2.id}`}>
                             <CardActionArea
