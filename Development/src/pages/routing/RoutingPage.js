@@ -202,8 +202,8 @@ export const RoutingPage = props => {
                     data: responseData,
                     type: 'application/sdp',
                 },
-            const notify = useNotify();
             };
+            const notify = useNotify();
             console.log(JSON.stringify(requestBody));
 
             // Effectuer la requête PATCH pour mettre à jour le contenu de l'URL
