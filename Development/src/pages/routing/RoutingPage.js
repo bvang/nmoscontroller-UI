@@ -12,7 +12,7 @@ import {
     TableRow,
     Typography,
 } from '@material-ui/core';
-import { Loading, Title, useNotify } from 'react-admin';
+import { Loading, Title } from 'react-admin';
 //import ActiveField from '../../components/ActiveField';
 import FilterPanel, {
     AutocompleteFilter,
