@@ -203,7 +203,10 @@ export const RoutingPage = props => {
                     type: 'application/sdp',
                 },
             };
-            const notify = useNotify();
+            /*const notify = useNotify();
+            copy(get(record, '$transportfile')).then(() => {
+                notify('Transport file copied');
+            });*/
             console.log(JSON.stringify(requestBody));
 
             // Effectuer la requête PATCH pour mettre à jour le contenu de l'URL
