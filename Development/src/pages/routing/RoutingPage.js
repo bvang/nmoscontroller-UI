@@ -189,7 +189,7 @@ export const RoutingPage = props => {
         console.log(desiredHref);
         console.log(responseData);
 
-        const URL = `${desiredHref}/single/receivers/${id}/staged/`;
+        const URL = `${desiredHref}single/receivers/${id}/staged/`;
         //URL = deviceData/$id.controls.href
         if (responseData) {
             // Mettre à jour le champ "data" avec le contenu de l'URL
