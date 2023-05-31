@@ -207,7 +207,7 @@ export const RoutingPage = props => {
             console.log(JSON.stringify(requestBody));
 
             // Effectuer la requête PATCH pour mettre à jour le contenu de l'URL
-            fetch(URL, { A REMETTRE POUR LE PATCH
+            fetch(URL, {//A REMETTRE POUR LE PATCH
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
