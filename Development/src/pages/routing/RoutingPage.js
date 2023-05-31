@@ -185,7 +185,6 @@ export const RoutingPage = props => {
 
     const handleClickCopy = async (id, desiredHref) => {
         //CHERCHER L'URL DU RECEIVER
-        
         console.log(id); //test
         console.log(desiredHref);
         console.log(responseData);
@@ -210,7 +209,8 @@ export const RoutingPage = props => {
             console.log(JSON.stringify(requestBody));
 
             // Effectuer la requête PATCH pour mettre à jour le contenu de l'URL
-            fetch(URL, {//A REMETTRE POUR LE PATCH
+            fetch(URL, {
+                //A REMETTRE POUR LE PATCH
                 method: 'PATCH',
                 headers: {
                     'Content-Type': 'application/json',
@@ -222,10 +222,15 @@ export const RoutingPage = props => {
                     console.log(data);
                 })
                 .catch(error => {
-                    console.error('Erreur lors de la mise à jour du contenu de l\'URL :', error);
+                    console.error(
+                        'Erreur lors de la mise à jour du contenu de l\'URL :',
+                        error
+                    );
                 });
         } else {
-            console.error('Aucun contenu à mettre à jour. Veuillez récupérer le contenu de l\'URL d\'abord.');
+            console.error(
+                'Aucun contenu à mettre à jour. Veuillez récupérer le contenu de l\'URL d\'abord.'
+            );
         }
     };
 
