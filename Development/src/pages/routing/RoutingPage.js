@@ -98,10 +98,18 @@ export const RoutingPage = props => {
             devicesData.forEach(item2 => {
                 if (item1.device_id === item2.id) {
                     const data = item2.controls;
-                    console.log("voici le contenu de controls : ", item2.controls);
-                    const desiredType = "urn:x-nmos:control:sr-ctrl/v1.1";
-                    const desiredHref = data.find(obj => obj.type === desiredType)?.href;
-                    console.log("voici l'url du receiver : ", desiredHref);
+                    console.log(
+                        'voici le contenu de controls : ',
+                        item2.controls
+                    );
+                    const desiredType = 'urn:x-nmos:control:sr-ctrl/v1.1';
+                    const desiredHref = data.find(
+                        obj => obj.type === desiredType
+                    )?.href;
+                    console.log(
+                        'voici lurl du receiver : ',
+                        desiredHref
+                    );
                     matchingItems.push(
                         <Card key={`${item1.device_id}-${item2.id}`}>
                             <CardActionArea
