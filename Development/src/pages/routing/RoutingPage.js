@@ -76,9 +76,8 @@ export const RoutingPage = props => {
         return <Loading />;
     }
 
-    const notify = useNotify();
-
     const handleClick = async (manifestHref, id) => {
+        const notify = useNotify();
         const parts = manifestHref.split('/');
         const baseUrl = parts.slice(0, 3).join('/') + '/';
         const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
@@ -131,7 +130,7 @@ export const RoutingPage = props => {
     };
 
     const clearReceiver = async (id, desiredHref) => {
-
+        const notify = useNotify();
         const URL = `${desiredHref}single/receivers/${id}/staged/`;
         const requestBody = {
             activation: {
@@ -153,6 +152,7 @@ export const RoutingPage = props => {
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            notify('Receiver cleared')
         })
         .catch(error => {
             console.error("Erreur lors de la mise a jour du contenu de lURL :", error);
@@ -217,6 +217,7 @@ export const RoutingPage = props => {
     }
 
     const handleClickCopy = async (id, desiredHref) => {
+        const notify = useNotify();
         //CHERCHER L'URL DU RECEIVER
         console.log(id); //test
         console.log(desiredHref);
@@ -235,10 +236,6 @@ export const RoutingPage = props => {
                     type: 'application/sdp',
                 },
             };
-            /*const notify = useNotify();
-            copy(get(record, '$transportfile')).then(() => {
-                notify('Transport file copied');
-            });*/
             console.log(JSON.stringify(requestBody));
 
             // Effectuer la requête PATCH pour mettre à jour le contenu de l'URL
