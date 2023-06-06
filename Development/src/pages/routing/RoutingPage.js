@@ -75,6 +75,8 @@ export const RoutingPage = props => {
         return <Loading />;
     }
 
+    const notify = useNotify();
+
     const handleClick = async (manifestHref, id) => {
         const parts = manifestHref.split('/');
         const baseUrl = parts.slice(0, 3).join('/') + '/';
@@ -100,6 +102,7 @@ export const RoutingPage = props => {
                 const data = dataurl.replace(/\n/g, '\n').replace(/"/g, '\\"');
                 console.log(data);
                 setResponseData(data);
+                notify('SDP loaded');
             })
             .catch(error => {
                 console.error(error);
@@ -124,6 +127,35 @@ export const RoutingPage = props => {
                         // Gérer l'erreur de la deuxième requête
                     });
             });
+    };
+
+    const clearReceiver = async (id, desiredHref) => {
+
+        const URL = `${desiredHref}single/receivers/${id}/staged/`;
+        const requestBody = {
+            activation: {
+                mode: "activate_immediate"
+            },
+            transport_file: {
+                data: null,
+                type: null
+            },
+        };
+        console.log(JSON.stringify(requestBody));
+        fetch(URL, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error("Erreur lors de la mise a jour du contenu de lURL :", error);
+        });
     };
 
     function createMatchingCards(receiverData, devicesData) {
@@ -167,6 +199,14 @@ export const RoutingPage = props => {
                                     </Typography>
                                 </CardContent>
                             </CardActionArea>
+                            <Button
+                                variant="contained"
+                                color="error"
+                                style={{ color: '#ffffff', float: 'right' }}
+                                onClick={() => clearReceiver(item1.id, desiredHref)}
+                            >
+                                Clear Receiver
+                            </Button>
                         </Card>
                     );
                 }
@@ -212,6 +252,7 @@ export const RoutingPage = props => {
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
+                    notify('PATCH of SDP done');
                 })
                 .catch(error => {
                     console.error(
