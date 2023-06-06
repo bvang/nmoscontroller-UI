@@ -134,7 +134,7 @@ export const RoutingPage = props => {
         const URL = `${desiredHref}single/receivers/${id}/staged/`;
         const requestBody = {
             activation: {
-                mode: 'activate_immediate'
+                mode: 'activate_immediate',
             },
             transport_file: {
                 data: null,
