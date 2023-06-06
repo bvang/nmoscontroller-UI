@@ -203,7 +203,6 @@ export const RoutingPage = props => {
                     type: 'application/sdp',
                 },
             };
-            
             console.log(JSON.stringify(requestBody));
 
             // Effectuer la requête PATCH pour mettre à jour le contenu de l'URL
@@ -231,9 +230,11 @@ export const RoutingPage = props => {
             console.error(
                 "Aucun contenu à mettre à jour. Veuillez récupérer le contenu de l'URL d'abord."
             );
-            notify('No content to update. Please retrieve the URL content first');
+            notify(
+                'No content to update. Please retrieve the URL content first'
+            );
         }
-    };
+    }
 
     return (
         <>
