@@ -131,15 +131,14 @@ export const RoutingPage = props => {
     };
 
     const clearReceiver = async (id, desiredHref) => {
-        
         const URL = `${desiredHref}single/receivers/${id}/staged/`;
         const requestBody = {
             activation: {
-                mode: "activate_immediate"
+                mode: 'activate_immediate'
             },
             transport_file: {
                 data: null,
-                type: null
+                type: null,
             },
         };
         console.log(JSON.stringify(requestBody));
@@ -150,14 +149,17 @@ export const RoutingPage = props => {
             },
             body: JSON.stringify(requestBody),
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            notify('Receiver cleared')
-        })
-        .catch(error => {
-            console.error("Erreur lors de la mise a jour du contenu de lURL :", error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                notify('Receiver cleared');
+            })
+            .catch(error => {
+                console.error(
+                    'Erreur lors de la mise a jour du contenu de lURL :',
+                    error
+                );
+            });
     };
 
     function createMatchingCards(receiverData, devicesData) {
@@ -205,7 +207,9 @@ export const RoutingPage = props => {
                                 variant="contained"
                                 color="error"
                                 style={{ color: '#ffffff', float: 'right' }}
-                                onClick={() => clearReceiver(item1.id, desiredHref)}
+                                onClick={() =>
+                                    clearReceiver(item1.id, desiredHref)
+                                }
                             >
                                 Clear Receiver
                             </Button>
