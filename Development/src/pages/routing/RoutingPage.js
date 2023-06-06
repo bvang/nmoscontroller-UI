@@ -111,7 +111,7 @@ export const RoutingPage = props => {
                         <Card key={`${item1.device_id}-${item2.id}`}>
                             <CardActionArea
                                 onClick={() =>
-                                    handleClickCopy(
+                                    HandleClickCopy(
                                         //URL = deviceData/$id.controls.href
                                         item1.id,
                                         desiredHref
@@ -183,7 +183,7 @@ export const RoutingPage = props => {
                                     ))}
     </TableBody>*/
 
-    function handleClickCopy(id, desiredHref) {
+    function HandleClickCopy(id, desiredHref) {
         //CHERCHER L'URL DU RECEIVER
         console.log(id); //test
         console.log(desiredHref);
