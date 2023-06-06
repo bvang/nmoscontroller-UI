@@ -183,7 +183,7 @@ export const RoutingPage = props => {
                                     ))}
     </TableBody>*/
 
-    const handleClickCopy = async (id, desiredHref) => {
+    function handleClickCopy = async (id, desiredHref) => {
         //CHERCHER L'URL DU RECEIVER
         console.log(id); //test
         console.log(desiredHref);
