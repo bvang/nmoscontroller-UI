@@ -72,12 +72,13 @@ export const RoutingPage = props => {
         setReceiverPaginationURL(receiverPaginationURL[label]);
     };
 
+    const notify = useNotify();
+
     if (!senderLoaded || !receiverLoaded) {
         return <Loading />;
     }
 
     const handleClick = async (manifestHref, id) => {
-        const notify = useNotify();
         const parts = manifestHref.split('/');
         const baseUrl = parts.slice(0, 3).join('/') + '/';
         const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
@@ -130,7 +131,7 @@ export const RoutingPage = props => {
     };
 
     const clearReceiver = async (id, desiredHref) => {
-        const notify = useNotify();
+        
         const URL = `${desiredHref}single/receivers/${id}/staged/`;
         const requestBody = {
             activation: {
@@ -217,7 +218,6 @@ export const RoutingPage = props => {
     }
 
     const handleClickCopy = async (id, desiredHref) => {
-        const notify = useNotify();
         //CHERCHER L'URL DU RECEIVER
         console.log(id); //test
         console.log(desiredHref);
