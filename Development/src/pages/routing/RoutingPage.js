@@ -204,7 +204,10 @@ export const RoutingPage = props => {
                                     <Button
                                         variant="contained"
                                         color="error"
-                                        style={{ color: '#ffffff', float: 'right' }}
+                                        style={{
+                                            color: '#ffffff',
+                                            float: 'right',
+                                        }}
                                         onClick={() =>
                                             clearReceiver(item1.id, desiredHref)
                                         }
