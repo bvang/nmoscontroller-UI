@@ -80,7 +80,7 @@ export const RoutingPage = props => {
         const baseUrl = parts.slice(0, 3).join('/') + '/';
         const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
         fetch(URL)
-            .then(response => response.text())
+            /*.then(response => response.text())
             .then(dataurl => {
                 const data = dataurl.replace(/\n/g, '\n').replace(/"/g, '\\"');
                 console.log(data);
@@ -89,6 +89,38 @@ export const RoutingPage = props => {
             })
             .catch(error => {
                 console.error(error);
+            });*/
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Requête avec v1.1 a échoué');
+                }
+                return response.text();
+            })
+            .then(dataurl => {
+                const data = dataurl.replace(/\n/g, '\n').replace(/"/g, '\\"');
+                console.log(data);
+                setResponseData(data);
+            })
+            .catch(error => {
+                console.error(error);
+                // Effectuer une deuxième requête avec v1.0
+                const fallbackURL = `${baseUrl}x-nmos/connection/v1.0/single/senders/${id}/transportfile/`;
+                fetch(fallbackURL)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Requête avec v1.0 a échoué');
+                        }
+                        return response.text();
+                    })
+                    .then(dataurl => {
+                        const data = dataurl.replace(/\n/g, '\n').replace(/"/g, '\\"');
+                        console.log(data);
+                        setResponseData(data);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        // Gérer l'erreur de la deuxième requête
+                    });
             });
     };
 
@@ -140,48 +172,6 @@ export const RoutingPage = props => {
         });
         return matchingItems;
     }
-    /*<TableBody> ANCIEN CODE
-                                    {receiverData.map(item1 => (
-                                        <TableRow key={item1.id}>
-                                            {devicesData.map(item2 => (
-                                                <TableCell
-                                                    component="th"
-                                                    scope="row"
-                                                    key={item2.id}
-                                                >
-                                                    <Card
-                                                        sx={{
-                                                            maxWidth: 100,
-                                                        }}
-                                                    >
-                                                        <CardActionArea
-                                                            onClick={() =>
-                                                                handleClickCopy(
-                                                                    //URL = deviceData/$id.controls.href
-                                                                    item1.device_id,
-                                                                    item1.id
-                                                                )
-                                                            }
-                                                        >
-                                                            <CardContent>
-                                                                <Typography>
-                                                                    {
-                                                                        item1.label
-                                                                    }
-                                                                </Typography>
-                                                                <Typography>
-                                                                    {
-                                                                        item2.label
-                                                                    }
-                                                                </Typography>
-                                                            </CardContent>
-                                                        </CardActionArea>
-                                                    </Card>
-                                                </TableCell>
-                                            ))}
-                                        </TableRow>
-                                    ))}
-    </TableBody>*/
 
     const handleClickCopy = async (id, desiredHref) => {
         //CHERCHER L'URL DU RECEIVER
