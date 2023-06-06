@@ -201,18 +201,18 @@ export const RoutingPage = props => {
                                     <Typography variant="subtitle1">
                                         {item1.description}
                                     </Typography>
+                                    <Button
+                                        variant="contained"
+                                        color="error"
+                                        style={{ color: '#ffffff', float: 'right' }}
+                                        onClick={() =>
+                                            clearReceiver(item1.id, desiredHref)
+                                        }
+                                    >
+                                        Clear Receiver
+                                    </Button>
                                 </CardContent>
                             </CardActionArea>
-                            <Button
-                                variant="contained"
-                                color="error"
-                                style={{ color: '#ffffff', float: 'right' }}
-                                onClick={() =>
-                                    clearReceiver(item1.id, desiredHref)
-                                }
-                            >
-                                Clear Receiver
-                            </Button>
                         </Card>
                     );
                 }
