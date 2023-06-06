@@ -113,7 +113,7 @@ export const RoutingPage = props => {
                         return response.text();
                     })
                     .then(dataurl => {
-                        const data = dataurl.
+                        const data = dataurl
                             .replace(/\n/g, '\n')
                             .replace(/"/g, '\\"');
                         console.log(data);
