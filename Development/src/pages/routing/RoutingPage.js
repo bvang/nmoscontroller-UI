@@ -12,7 +12,7 @@ import {
     TableRow,
     Typography,
 } from '@material-ui/core';
-import { Loading, Title } from 'react-admin';
+import { Loading, Title, useNotify } from 'react-admin';
 //import ActiveField from '../../components/ActiveField';
 import FilterPanel, {
     AutocompleteFilter,
@@ -190,6 +190,7 @@ export const RoutingPage = props => {
         console.log(responseData);
 
         const URL = `${desiredHref}single/receivers/${id}/staged/`;
+        const notify = useNotify();
         //URL = deviceData/$id.controls.href
         if (responseData) {
             // Mettre à jour le champ "data" avec le contenu de l'URL
@@ -202,10 +203,7 @@ export const RoutingPage = props => {
                     type: 'application/sdp',
                 },
             };
-            /*const notify = useNotify();
-            copy(get(record, '$transportfile')).then(() => {
-                notify('Transport file copied');
-            });*/
+            
             console.log(JSON.stringify(requestBody));
 
             // Effectuer la requête PATCH pour mettre à jour le contenu de l'URL
@@ -220,17 +218,20 @@ export const RoutingPage = props => {
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
+                    notify('PATCH DONE');
                 })
                 .catch(error => {
                     console.error(
                         "Erreur lors de la mise à jour du contenu de l'URL :",
                         error
                     );
+                    notify('Error updating URL content');
                 });
         } else {
             console.error(
                 "Aucun contenu à mettre à jour. Veuillez récupérer le contenu de l'URL d'abord."
             );
+            notify('No content to update. Please retrieve the URL content first');
         }
     };
 

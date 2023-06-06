@@ -4,9 +4,9 @@
     "\\Development",
     "\\Development\\src",
     "\\Development\\src\\pages",
-    "\\Development\\src\\pages\\receivers",
+    "\\Development\\src\\pages\\routing",
     "\\Development\\src\\pages\\senders"
   ],
-  "SelectedNode": "\\Development\\src\\pages\\senders\\SendersShow.js",
+  "SelectedNode": "\\Development\\src\\pages\\senders\\SendersEdit.js",
   "PreviewInSolutionExplorer": false
 }
