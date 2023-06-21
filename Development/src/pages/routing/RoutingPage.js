@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Tab, TabContext, TabList, TabPanel } from '@material-ui/lab';
+import { TabContext, TabList, TabPanel } from '@material-ui/lab';
 import {
     Box,
     Button,
@@ -7,6 +7,7 @@ import {
     CardActionArea,
     CardContent,
     List,
+    Tab,
     Table,
     TableBody,
     TableCell,
