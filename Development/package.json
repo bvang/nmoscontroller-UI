@@ -6,7 +6,7 @@
   "dependencies": {
     "@material-ui/core": "^4.3.3",
     "@material-ui/icons": "^4.2.1",
-    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@material-ui/lab": "^4.0.0-alpha.61",
     "@material-ui/styles": "^4.3.3",
     "axios": "^1.4.0",
     "clipboard-copy": "^4.0.1",

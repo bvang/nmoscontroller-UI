@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Tab, TabContext, TabList, TabPanel } from '@material-ui/lab';
 import {
     Box,
     Button,
@@ -6,16 +7,12 @@ import {
     CardActionArea,
     CardContent,
     List,
-    Tab,
-    TabContext,
     Table,
     TableBody,
     TableCell,
     TableContainer,
     TableHead,
-    TableRow,
-    TabList,
-    TabPanel,
+    TableRow,,
     Typography,
 } from '@material-ui/core';
 import { Loading, Title, useNotify } from 'react-admin';
