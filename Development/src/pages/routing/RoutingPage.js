@@ -456,7 +456,7 @@ const RoutingListVideo = props => {
     const [responseData, setResponseData] = useState(null);
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
-    const [flowvideoPaginationURL, setFlowvideoPaginationURL] = useState(null);
+    //const [flowvideoPaginationURL, setFlowvideoPaginationURL] = useState(null);
     const {
         data: senderData,
         loaded: senderLoaded,
@@ -495,25 +495,15 @@ const RoutingListVideo = props => {
         setReceiverPaginationURL(receiverPaginationURL[label]);
     };
 
-    const {
-        data: flowvideoData,
-        loaded: flowvideoLoaded,
-        pagination: flowvideoPagination,
-        url: flowvideoURL,
-    } = useGetList({
+    const { data: flowvideoData } = useGetList({
         ...props,
         resource: 'flows',
         filter,
-        paginationURL: flowvideoPaginationURL,
     });
-
-    const flowvideonextPage = label => {
-        setFlowvideoPaginationURL(flowvideoPaginationURL[label]);
-    };
 
     const notify = useNotify();
 
-    if (!senderLoaded || !receiverLoaded) {
+    if (!senderLoaded || !receiverLoaded || !flowvideoLoaded) {
         return <Loading />;
     }
 
@@ -598,7 +588,7 @@ const RoutingListVideo = props => {
             flowvideoData.forEach(item2 => {
                 if (item1.flow_id === item2.id) {
                     const data = item2.format;
-                    if (item2.format == 'urn:x-nmos:format:video') {
+                    if (item2.format === 'urn:x-nmos:format:video') {
                         console.log('voici le format : ', data);
                         matchingItems.push(
                             <Card key={`${item1.device_id}-${item2.id}`}>
@@ -640,7 +630,7 @@ const RoutingListVideo = props => {
             devicesData.forEach(item2 => {
                 if (item1.device_id === item2.id) {
                     const data = item2.controls;
-                    if (item1.format == 'urn:x-nmos:format:video') {
+                    if (item1.format === 'urn:x-nmos:format:video') {
                         console.log(
                             'voici le contenu de controls : ',
                             item2.controls
