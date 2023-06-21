@@ -43,7 +43,10 @@ export const RoutingPage = props => {
         <Box sx={{ width: "100%", typography: "body1" }}>
             <TabContext value={value}>
                 <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                    <TabList onChange={handleChange} aria-label="lab API tabs example">
+                    <TabList 
+                        onChange={handleChange}
+                        aria-label="lab API tabs example"
+                    >
                         <Tab label="Video" value="1" />
                         <Tab label="Audio" value="2" />
                         <Tab label="Data" value="3" />
@@ -58,9 +61,8 @@ export const RoutingPage = props => {
                 <TabPanel value="4">Bulk</TabPanel>
             </TabContext>
         </Box>
-    )
-}
-
+    );
+};
 
 const RoutingList = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');

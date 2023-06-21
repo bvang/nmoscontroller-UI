@@ -12,9 +12,7 @@ import { DevicesList, DevicesShow } from './pages/devices';
 import { SourcesList, SourcesShow } from './pages/sources';
 import { FlowsList, FlowsShow } from './pages/flows';
 import { ReceiversEdit, ReceiversList, ReceiversShow } from './pages/receivers';
-import {
-    RoutingPage,
-} from './pages/routing';
+import { RoutingPage } from './pages/routing';
 import { SendersEdit, SendersList, SendersShow } from './pages/senders';
 import { LogsList, LogsShow } from './pages/logs';
 import {
