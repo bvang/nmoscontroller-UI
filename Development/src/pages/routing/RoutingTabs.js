@@ -1,8 +1,7 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import * as React from "react";
 import { Box, Tab, TabContext, TabList, TabPanel } from '@material-ui/core';
 import RoutingPage from './RoutingPage';
-
-const [activeTab, setActiveTab] = useState(0);
 
 export const RoutingTabs = props => {
     const [value, setValue] = React.useState('1');
