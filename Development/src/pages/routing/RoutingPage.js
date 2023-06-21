@@ -54,13 +54,15 @@ export const RoutingPage = props => {
                     </TabList>
                 </Box>
                 <TabPanel value="1">
-                    <RoutingList {...props} />
-                </TabPanel>
-                <TabPanel value="2">
                     <RoutingListVideo {...props} />
                 </TabPanel>
+                <TabPanel value="2">
+                    
+                </TabPanel>
                 <TabPanel value="3">Data</TabPanel>
-                <TabPanel value="4">Bulk</TabPanel>
+                <TabPanel value="4">
+                    <RoutingList {...props} />
+                </TabPanel>
             </TabContext>
         </Box>
     );
