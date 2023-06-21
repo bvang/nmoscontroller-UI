@@ -36,7 +36,7 @@ export const RoutingPage = props => {
     const [value, setValue] = React.useState('1');
 
     const handleChange = (event, newValue) => {
-    setValue(newValue);
+        setValue(newValue);
     };
 
     return (
