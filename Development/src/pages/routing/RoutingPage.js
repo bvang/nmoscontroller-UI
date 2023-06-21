@@ -46,7 +46,7 @@ export const RoutingPage = props => {
                     onChange={handleChange}
                     aria-label="lab API tabs example"
                 >
-                     <Tab label="Video" value="1" />
+                    <Tab label="Video" value="1" />
                     <Tab label="Audio" value="2" />
                     <Tab label="Data" value="3" />
                     <Tab label="Bulk" value="4" />
