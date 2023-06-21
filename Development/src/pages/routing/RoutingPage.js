@@ -42,7 +42,7 @@ export const RoutingPage = props => {
     return (
         <Box sx={{ width: '100%', typography: 'body1' }}>
             <TabContext value={value}>
-                <Box sx={{ borderBottom: 1}}>
+                <Box sx={{ borderBottom: 1 }}>
                     <TabList
                         onChange={handleChange}
                         aria-label="lab API tabs example"
@@ -451,7 +451,6 @@ const RoutingList = props => {
     );
 };
 
-
 const RoutingListVideo = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
     const [responseData, setResponseData] = useState(null);
@@ -600,10 +599,7 @@ const RoutingListVideo = props => {
                 if (item1.flow_id === item2.id) {
                     const data = item2.format;
                     if (item2.format == 'urn:x-nmos:format:video') {
-                        console.log(
-                            'voici le format : ',
-                            data
-                        );
+                        console.log('voici le format : ', data);
                         matchingItems.push(
                             <Card key={`${item1.device_id}-${item2.id}`}>
                                 <CardActionArea
@@ -631,7 +627,7 @@ const RoutingListVideo = props => {
                                 </CardActionArea>
                             </Card>
                         );
-                    }       
+                    }
                 }
             });
         });
@@ -686,7 +682,10 @@ const RoutingListVideo = props => {
                                                 float: 'right',
                                             }}
                                             onClick={() =>
-                                                clearReceiver(item1.id, desiredHref)
+                                                clearReceiver(
+                                                    item1.id,
+                                                    desiredHref
+                                                )
                                             }
                                         >
                                             Clear Receiver
@@ -756,7 +755,7 @@ const RoutingListVideo = props => {
                 <span style={{ flexGrow: 1 }} />
                 <ListActions url={senderURL} />
                 <ListActions url={receiverURL} />
-                <ListActions url={flowvideoURL} />                
+                <ListActions url={flowvideoURL} />
             </div>
             <Card>
                 <Title title={'Routing'} />
@@ -798,18 +797,18 @@ const RoutingListVideo = props => {
                                 </TableHead>
                                 <TableBody>
                                     {createMatchingCardsSenderFlowVideo(
-                                            senderData,
-                                            flowvideoData
-                                        ).map((card, index) => (
-                                            <TableRow key={index}>
-                                                <TableCell
-                                                    component="th"
-                                                    scope="row"
-                                                >
-                                                    {card}
-                                                </TableCell>
-                                            </TableRow>
-                                        ))}
+                                        senderData,
+                                        flowvideoData
+                                    ).map((card, index) => (
+                                        <TableRow key={index}>
+                                            <TableCell
+                                                component="th"
+                                                scope="row"
+                                            >
+                                                {card}
+                                            </TableCell>
+                                        </TableRow>
+                                    ))}
                                 </TableBody>
                             </Table>
                         </TableContainer>
