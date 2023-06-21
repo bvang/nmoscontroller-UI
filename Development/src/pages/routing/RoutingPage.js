@@ -503,7 +503,7 @@ const RoutingListVideo = props => {
 
     const notify = useNotify();
 
-    if (!senderLoaded || !receiverLoaded || !flowvideoLoaded) {
+    if (!senderLoaded || !receiverLoaded) {
         return <Loading />;
     }
 
@@ -745,7 +745,6 @@ const RoutingListVideo = props => {
                 <span style={{ flexGrow: 1 }} />
                 <ListActions url={senderURL} />
                 <ListActions url={receiverURL} />
-                <ListActions url={flowvideoURL} />
             </div>
             <Card>
                 <Title title={'Routing'} />
