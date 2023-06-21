@@ -83,19 +83,9 @@ export const RoutingPage = props => {
         const baseUrl = parts.slice(0, 3).join('/') + '/';
         const URL = `${baseUrl}x-nmos/connection/v1.1/single/senders/${id}/transportfile/`;
         fetch(URL)
-            /*.then(response => response.text())
-            .then(dataurl => {
-                const data = dataurl.replace(/\n/g, '\n').replace(/"/g, '\\"');
-                console.log(data);
-
-                setResponseData(data);
-            })
-            .catch(error => {
-                console.error(error);
-            });*/
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Requête avec v1.1 a échoué');
+                    throw new Error('Requete avec v1.1 a echoue');
                 }
                 return response.text();
             })
@@ -107,12 +97,12 @@ export const RoutingPage = props => {
             })
             .catch(error => {
                 console.error(error);
-                // Effectuer une deuxième requête avec v1.0
+                // Effectuer une deuxiï¿½me requï¿½te avec v1.0
                 const fallbackURL = `${baseUrl}x-nmos/connection/v1.0/single/senders/${id}/transportfile/`;
                 fetch(fallbackURL)
                     .then(response => {
                         if (!response.ok) {
-                            throw new Error('Requête avec v1.0 a échoué');
+                            throw new Error('Requï¿½te avec v1.0 a ï¿½chouï¿½');
                         }
                         return response.text();
                     })
@@ -125,7 +115,7 @@ export const RoutingPage = props => {
                     })
                     .catch(error => {
                         console.error(error);
-                        // Gérer l'erreur de la deuxième requête
+                        // Gï¿½rer l'erreur de la deuxiï¿½me requï¿½te
                     });
             });
     };
@@ -159,6 +149,7 @@ export const RoutingPage = props => {
                     'Erreur lors de la mise a jour du contenu de lURL :',
                     error
                 );
+                notify('Error while clearing');
             });
     };
 
@@ -233,7 +224,7 @@ export const RoutingPage = props => {
         const URL = `${desiredHref}single/receivers/${id}/staged/`;
         //URL = deviceData/$id.controls.href
         if (responseData) {
-            // Mettre à jour le champ "data" avec le contenu de l'URL
+            // Mettre ï¿½ jour le champ "data" avec le contenu de l'URL
             const requestBody = {
                 activation: {
                     mode: 'activate_immediate',
@@ -245,7 +236,7 @@ export const RoutingPage = props => {
             };
             console.log(JSON.stringify(requestBody));
 
-            // Effectuer la requête PATCH pour mettre à jour le contenu de l'URL
+            // Effectuer la requï¿½te PATCH pour mettre ï¿½ jour le contenu de l'URL
             fetch(URL, {
                 //A REMETTRE POUR LE PATCH
                 method: 'PATCH',
@@ -261,13 +252,13 @@ export const RoutingPage = props => {
                 })
                 .catch(error => {
                     console.error(
-                        "Erreur lors de la mise à jour du contenu de l'URL :",
+                        "Erreur lors de la mise ï¿½ jour du contenu de l'URL :",
                         error
                     );
                 });
         } else {
             console.error(
-                "Aucun contenu à mettre à jour. Veuillez récupérer le contenu de l'URL d'abord."
+                "Aucun contenu ï¿½ mettre ï¿½ jour. Veuillez rï¿½cupï¿½rer le contenu de l'URL d'abord."
             );
         }
     };

@@ -2,11 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\Development",
+    "\\Development\\public",
     "\\Development\\src",
     "\\Development\\src\\pages",
-    "\\Development\\src\\pages\\routing",
-    "\\Development\\src\\pages\\senders"
+    "\\Development\\src\\pages\\nodes"
   ],
-  "SelectedNode": "\\Development\\src\\pages\\senders\\SendersEdit.js",
   "PreviewInSolutionExplorer": false
 }
