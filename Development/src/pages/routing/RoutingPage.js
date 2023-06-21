@@ -12,7 +12,7 @@ import {
     TableCell,
     TableContainer,
     TableHead,
-    TableRow,,
+    TableRow,
     Typography,
 } from '@material-ui/core';
 import { Loading, Title, useNotify } from 'react-admin';
