@@ -586,7 +586,6 @@ const RoutingListVideo = props => {
         senderData.forEach(item1 => {
             flowvideoData.forEach(item2 => {
                 if (item1.flow_id === item2.id) {
-                    const data = item2.format;
                     if (item2.format === 'urn:x-nmos:format:video') {
                         matchingItems.push(
                             <Card key={`${item1.device_id}-${item2.id}`}>
@@ -1001,7 +1000,6 @@ const RoutingListAudio = props => {
         senderData.forEach(item1 => {
             flowaudioData.forEach(item2 => {
                 if (item1.flow_id === item2.id) {
-                    const data = item2.format;
                     if (item2.format === 'urn:x-nmos:format:audio') {
                         matchingItems.push(
                             <Card key={`${item1.device_id}-${item2.id}`}>
