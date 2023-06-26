@@ -29,7 +29,6 @@ import ListActions from '../../components/ListActions';
 import useGetList from '../../components/useGetList';
 import { queryVersion, useJSONSetting } from '../../settings';
 
-
 export const RoutingList = props => {
     const [filter, setFilter] = useJSONSetting('Senders Filter');
     const [responseData, setResponseData] = useState(null);
