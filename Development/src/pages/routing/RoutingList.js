@@ -320,8 +320,8 @@ export const RoutingList = props => {
                                                 <Card
                                                     sx={{
                                                         maxWidth: 100,
-                                                        backgroundColor: 
-                                                            '#303030'
+                                                        backgroundColor:
+                                                            '#303030',
                                                     }}
                                                 >
                                                     <CardActionArea
