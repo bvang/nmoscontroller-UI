@@ -195,9 +195,8 @@ export const RoutingList = props => {
                             </CardActionArea>
                             <CardActions>
                                 <Button
-                                    variant="contained"
+                                    variant="solid"
                                     color="danger"
-                                    sx={{ backgroundColor: '#991d1d' }}
                                     style={{
                                         color: '#ffffff',
                                         float: 'right',
