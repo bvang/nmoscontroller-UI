@@ -3,6 +3,7 @@ import {
     Button,
     Card,
     CardActionArea,
+    CardActions,
     CardContent,
     List,
     Table,
@@ -187,21 +188,23 @@ export const RoutingList = props => {
                                     <Typography variant="subtitle1">
                                         {item1.description}
                                     </Typography>
-                                    <Button
-                                        variant="contained"
-                                        color="error"
-                                        style={{
-                                            color: '#ffffff',
-                                            float: 'right',
-                                        }}
-                                        onClick={() =>
-                                            clearReceiver(item1.id, desiredHref)
-                                        }
-                                    >
-                                        Clear Receiver
-                                    </Button>
                                 </CardContent>
                             </CardActionArea>
+                            <CardActions>
+                                <Button
+                                    variant="contained"
+                                    color="error"
+                                    style={{
+                                        color: '#ffffff',
+                                        float: 'right',
+                                    }}
+                                    onClick={() =>
+                                        clearReceiver(item1.id, desiredHref)
+                                    }
+                                >
+                                    Clear Receiver
+                                </Button>
+                            </CardActions>
                         </Card>
                     );
                 }

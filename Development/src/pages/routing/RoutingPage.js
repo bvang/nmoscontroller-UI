@@ -24,7 +24,6 @@ export const RoutingPage = props => {
                     <Tab label="Video" value="2" />
                     <Tab label="Audio" value="3" />
                     <Tab label="Data" value="4" />
-                    <Tab label="Bulk" value="5" />
                 </TabList>
                 <TabPanel value="1">
                     <RoutingList {...props} />
@@ -38,7 +37,6 @@ export const RoutingPage = props => {
                 <TabPanel value="4">
                     <RoutingListData {...props} />
                 </TabPanel>
-                <TabPanel value="5">Bulk</TabPanel>
             </TabContext>
         </Box>
     );
