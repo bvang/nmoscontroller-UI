@@ -317,10 +317,11 @@ export const RoutingList = props => {
                                                 component="th"
                                                 scope="row"
                                             >
-                                                <Card 
-                                                    sx={{ 
+                                                <Card
+                                                    sx={{
                                                         maxWidth: 100,
-                                                        backgroundColor: '#303030'
+                                                        backgroundColor: 
+                                                            '#303030'
                                                     }}
                                                 >
                                                     <CardActionArea
