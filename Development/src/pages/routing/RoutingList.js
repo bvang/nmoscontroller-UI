@@ -165,7 +165,10 @@ export const RoutingList = props => {
                         obj => obj.type === desiredType
                     )?.href;
                     matchingItems.push(
-                        <Card key={`${item1.device_id}-${item2.id}`}>
+                        <Card
+                            key={`${item1.device_id}-${item2.id}`}
+                            sx={{ backgroundColor: '#303030' }}
+                        >
                             <CardActionArea
                                 onClick={() =>
                                     handleClickCopy(
@@ -194,6 +197,7 @@ export const RoutingList = props => {
                                 <Button
                                     variant="contained"
                                     color="error"
+                                    sx={{ backgroundColor: 'red' }}
                                     style={{
                                         color: '#ffffff',
                                         float: 'right',
@@ -313,7 +317,12 @@ export const RoutingList = props => {
                                                 component="th"
                                                 scope="row"
                                             >
-                                                <Card sx={{ maxWidth: 100 }}>
+                                                <Card 
+                                                    sx={{ 
+                                                        maxWidth: 100,
+                                                        backgroundColor: '#303030'
+                                                    }}
+                                                >
                                                     <CardActionArea
                                                         onClick={() =>
                                                             handleClick(

@@ -3,6 +3,7 @@ import {
     Button,
     Card,
     CardActionArea,
+    CardActions,
     CardContent,
     List,
     Table,
@@ -166,7 +167,10 @@ export const RoutingListAudio = props => {
                 if (item1.flow_id === item2.id) {
                     if (item2.format === 'urn:x-nmos:format:audio') {
                         matchingItems.push(
-                            <Card key={`${item1.device_id}-${item2.id}`}>
+                            <Card
+                                key={`${item1.device_id}-${item2.id}`}
+                                sx={{ backgroundColor: '#303030' }}
+                            >
                                 <CardActionArea
                                     onClick={() =>
                                         handleClickFlowAudio(
@@ -211,7 +215,10 @@ export const RoutingListAudio = props => {
                             obj => obj.type === desiredType
                         )?.href;
                         matchingItems.push(
-                            <Card key={`${item1.device_id}-${item2.id}`}>
+                            <Card
+                                key={`${item1.device_id}-${item2.id}`}
+                                sx={{ backgroundColor: '#303030' }}
+                            >
                                 <CardActionArea
                                     onClick={() =>
                                         handleClickCopy(
@@ -234,24 +241,24 @@ export const RoutingListAudio = props => {
                                         <Typography variant="subtitle1">
                                             {item1.description}
                                         </Typography>
-                                        <Button
-                                            variant="contained"
-                                            color="error"
-                                            style={{
-                                                color: '#ffffff',
-                                                float: 'right',
-                                            }}
-                                            onClick={() =>
-                                                clearReceiver(
-                                                    item1.id,
-                                                    desiredHref
-                                                )
-                                            }
-                                        >
-                                            Clear Receiver
-                                        </Button>
                                     </CardContent>
                                 </CardActionArea>
+                                <CardActions>
+                                    <Button
+                                        variant="contained"
+                                        color="error"
+                                        sx={{ backgroundColor: 'red' }}
+                                        style={{
+                                            color: '#ffffff',
+                                            float: 'right',
+                                        }}
+                                        onClick={() =>
+                                            clearReceiver(item1.id, desiredHref)
+                                        }
+                                    >
+                                        Clear Receiver
+                                    </Button>
+                                </CardActions>
                             </Card>
                         );
                     }
