@@ -312,7 +312,7 @@ export const RoutingList = props => {
                                 </TableHead>
                                 <TableBody>
                                     {senderData.map(function (item, index) {
-                                        var cardID = index + 1;
+                                        const cardID = index + 1;
                                         return (
                                             <TableRow key={item.id}>
                                                 <TableCell
