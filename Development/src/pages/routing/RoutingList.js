@@ -195,11 +195,12 @@ export const RoutingList = props => {
                             </CardActionArea>
                             <CardActions>
                                 <Button
-                                    variant="solid"
-                                    color="danger"
+                                    variant="contained"
+                                    color="error"
                                     style={{
                                         color: '#ffffff',
                                         float: 'right',
+                                        backgroundColor: '#972323',
                                     }}
                                     onClick={() =>
                                         clearReceiver(item1.id, desiredHref)
@@ -310,42 +311,48 @@ export const RoutingList = props => {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody>
-                                    {senderData.map(item => (
-                                        <TableRow key={item.id}>
-                                            <TableCell
-                                                component="th"
-                                                scope="row"
-                                            >
-                                                <Card
-                                                    sx={{
-                                                        maxWidth: 100,
-                                                        backgroundColor:
-                                                            '#303030',
-                                                    }}
+                                    {senderData.map(function(item, index) {
+                                        var cardID = index + 1;
+                                        return (
+                                            <TableRow key={item.id}>
+                                                <TableCell
+                                                    component="th"
+                                                    scope="row"
                                                 >
-                                                    <CardActionArea
-                                                        onClick={() =>
-                                                            handleClick(
-                                                                item.manifest_href,
-                                                                item.id
-                                                            )
-                                                        }
+                                                    <Card
+                                                        sx={{
+                                                            maxWidth: 100,
+                                                            backgroundColor:
+                                                                '#303030',
+                                                        }}
                                                     >
-                                                        <CardContent>
-                                                            <Typography>
-                                                                {item.label}
-                                                            </Typography>
-                                                            <Typography>
-                                                                {
-                                                                    item.manifest_href
-                                                                }
-                                                            </Typography>
-                                                        </CardContent>
-                                                    </CardActionArea>
-                                                </Card>
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
+                                                        <CardActionArea
+                                                            onClick={() =>
+                                                                handleClick(
+                                                                    item.manifest_href,
+                                                                    item.id
+                                                                )
+                                                            }
+                                                        >
+                                                            <CardContent>
+                                                                <Typography>
+                                                                    {item.label}
+                                                                </Typography>
+                                                                <Typography>
+                                                                    {
+                                                                        item.manifest_href
+                                                                    }
+                                                                </Typography>
+                                                                <Typography>
+                                                                    ID: {cardID}
+                                                                </Typography>
+                                                            </CardContent>
+                                                        </CardActionArea>
+                                                    </Card>
+                                                </TableCell>
+                                            </TableRow>
+                                        );
+                                    })}
                                 </TableBody>
                             </Table>
                         </TableContainer>
