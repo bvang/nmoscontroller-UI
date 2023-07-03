@@ -31,8 +31,7 @@ import useGetList from '../../components/useGetList';
 import { queryVersion, useJSONSetting } from '../../settings';
 
 export const RoutingList = props => {
-    const [senderfilter, setsenderFilter] = useJSONSetting('Senders Filter');
-    const [receiverfilter, setreceiverFilter] = useJSONSetting('Receivers Filter');
+    const [filter, setFilter] = useJSONSetting('Senders Filter');
     const [responseData, setResponseData] = useState(null);
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
@@ -44,7 +43,7 @@ export const RoutingList = props => {
     } = useGetList({
         ...props,
         resource: 'senders',
-        filter: senderfilter,
+        filter,
         paginationURL: senderPaginationURL,
     });
 
@@ -60,7 +59,7 @@ export const RoutingList = props => {
     } = useGetList({
         ...props,
         resource: 'receivers',
-        filter: receiverfilter,
+        filter,
         paginationURL: receiverPaginationURL,
     });
 
@@ -277,9 +276,9 @@ export const RoutingList = props => {
                 <Title title={'Routing'} />
                 <CardContent>
                     <List>
-                        <FilterPanel filter={senderfilter} setFilter={setsenderFilter}>
+                        <FilterPanel filter={filter} setFilter={setFilter}>
                             <StringFilter source="label" />
-                            <StringFilter source="manifest_href" />
+                            <StringFilter source="description" />
                             <AutocompleteFilter
                                 source="transport"
                                 {...parameterAutocompleteProps(TRANSPORTS)}
@@ -365,7 +364,7 @@ export const RoutingList = props => {
                         />
                     </List>
                     <List>
-                        <FilterPanel filter={receiverfilter} setFilter={setreceiverFilter}>
+                        <FilterPanel filter={filter} setFilter={setFilter}>
                             <StringFilter source="label" />
                             <StringFilter source="description" />
                             <AutocompleteFilter
