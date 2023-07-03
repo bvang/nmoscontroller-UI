@@ -31,7 +31,8 @@ import useGetList from '../../components/useGetList';
 import { queryVersion, useJSONSetting } from '../../settings';
 
 export const RoutingList = props => {
-    const [filter, setFilter] = useJSONSetting('Senders Filter');
+    const [senderfilter, setsenderFilter] = useJSONSetting('Senders Filter');
+    const [receiverfilter, setreceiverFilter] = useJSONSetting('Receivers Filter');
     const [responseData, setResponseData] = useState(null);
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
@@ -43,7 +44,7 @@ export const RoutingList = props => {
     } = useGetList({
         ...props,
         resource: 'senders',
-        filter,
+        filter: senderfilter,
         paginationURL: senderPaginationURL,
     });
 
@@ -59,7 +60,7 @@ export const RoutingList = props => {
     } = useGetList({
         ...props,
         resource: 'receivers',
-        filter,
+        filter: receiverfilter,
         paginationURL: receiverPaginationURL,
     });
 
@@ -276,9 +277,9 @@ export const RoutingList = props => {
                 <Title title={'Routing'} />
                 <CardContent>
                     <List>
-                        <FilterPanel filter={filter} setFilter={setFilter}>
+                        <FilterPanel filter={senderfilter} setFilter={setsenderFilter}>
                             <StringFilter source="label" />
-                            <StringFilter source="description" />
+                            <StringFilter source="manifest_href" />
                             <AutocompleteFilter
                                 source="transport"
                                 {...parameterAutocompleteProps(TRANSPORTS)}
@@ -364,7 +365,7 @@ export const RoutingList = props => {
                         />
                     </List>
                     <List>
-                        <FilterPanel filter={filter} setFilter={setFilter}>
+                        <FilterPanel filter={receiverfilter} setFilter={setreceiverFilter}>
                             <StringFilter source="label" />
                             <StringFilter source="description" />
                             <AutocompleteFilter
