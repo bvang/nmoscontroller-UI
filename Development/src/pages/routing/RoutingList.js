@@ -32,9 +32,7 @@ import { queryVersion, useJSONSetting } from '../../settings';
 
 export const RoutingList = props => {
     const [senderfilter, setsenderFilter] = useJSONSetting('Senders Filter');
-    const [receiverfilter, setreceiverFilter] = useJSONSetting(
-        'Receivers Filter'
-    );
+    const [receiverfilter, setreceiverFilter] = useJSONSetting('Receivers Filter');
     const [devicesfilter, setdevicesFilter] = useJSONSetting('Devices Filter');
     const [responseData, setResponseData] = useState(null);
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
@@ -280,10 +278,7 @@ export const RoutingList = props => {
                 <Title title={'Routing'} />
                 <CardContent>
                     <List>
-                        <FilterPanel
-                            filter={senderfilter}
-                            setFilter={setsenderFilter}
-                        >
+                        <FilterPanel filter={senderfilter} setFilter={setsenderFilter}>
                             <StringFilter source="label" />
                             <StringFilter source="manifest_href" />
                             <AutocompleteFilter
@@ -371,10 +366,7 @@ export const RoutingList = props => {
                         />
                     </List>
                     <List>
-                        <FilterPanel
-                            filter={receiverfilter}
-                            setFilter={setreceiverFilter}
-                        >
+                        <FilterPanel filter={receiverfilter} setFilter={setreceiverFilter}>
                             <StringFilter source="label" />
                             <StringFilter source="description" />
                             <AutocompleteFilter
