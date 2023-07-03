@@ -33,7 +33,6 @@ import { queryVersion, useJSONSetting } from '../../settings';
 export const RoutingList = props => {
     const [senderfilter, setsenderFilter] = useJSONSetting('Senders Filter');
     const [receiverfilter, setreceiverFilter] = useJSONSetting('Receivers Filter');
-    const [devicesfilter, setdevicesFilter] = useJSONSetting('Devices Filter');
     const [responseData, setResponseData] = useState(null);
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
@@ -68,7 +67,7 @@ export const RoutingList = props => {
     const { data: devicesData } = useGetList({
         ...props,
         resource: 'devices',
-        filter: devicesfilter,
+        filter,
     });
 
     const receivernextPage = label => {
