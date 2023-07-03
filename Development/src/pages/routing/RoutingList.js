@@ -62,7 +62,7 @@ export const RoutingList = props => {
     } = useGetList({
         ...props,
         resource: 'receivers',
-        filter,
+        //filter: receiverfilter,
         paginationURL: receiverPaginationURL,
     });
 
