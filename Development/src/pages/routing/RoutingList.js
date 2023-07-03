@@ -32,10 +32,9 @@ import { queryVersion, useJSONSetting } from '../../settings';
 
 export const RoutingList = props => {
     const [senderfilter, setsenderFilter] = useJSONSetting('Senders Filter');
-    const [receiverfilter, setreceiverFilter] = useJSONSetting(
-        'Receivers Filter'
+    const [devicefilter, setdeviceFilter] = useJSONSetting(
+        'Devices Filter'
     );
-    const [devicesfilter, setdevicesFilter] = useJSONSetting('Devices Filter');
     const [responseData, setResponseData] = useState(null);
     const [senderPaginationURL, setSenderPaginationURL] = useState(null);
     const [receiverPaginationURL, setReceiverPaginationURL] = useState(null);
@@ -63,14 +62,14 @@ export const RoutingList = props => {
     } = useGetList({
         ...props,
         resource: 'receivers',
-        filter: receiverfilter,
+        filter,
         paginationURL: receiverPaginationURL,
     });
 
     const { data: devicesData } = useGetList({
         ...props,
         resource: 'devices',
-        filter: devicesfilter,
+        filter: devicefilter,
     });
 
     const receivernextPage = label => {
@@ -372,11 +371,11 @@ export const RoutingList = props => {
                     </List>
                     <List>
                         <FilterPanel
-                            filter={receiverfilter}
-                            setFilter={setreceiverFilter}
+                            filter={devicefilter}
+                            setFilter={setdeviceFilter}
                         >
                             <StringFilter source="label" />
-                            <StringFilter source="description" />
+                            <StringFilter source="controls[0].href" />
                             <AutocompleteFilter
                                 source="transport"
                                 {...parameterAutocompleteProps(TRANSPORTS)}
